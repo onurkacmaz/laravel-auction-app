@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('art_works', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description');
+            $table->boolean('status');
+            $table->foreignId('auction_id')->references('id')->on('auctions');
             $table->timestamps();
         });
     }

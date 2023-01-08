@@ -33,12 +33,16 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'tc_identification_number' => ['nullable', 'integer', 'digits:11', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', 'min:1']//Rules\Password::defaults()
+        ], [], [
+            'tc_identification_number' => 'TC Kimlik Numarası',
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'tc_identification_number' => $request->tc_identification_number ?? null,
             'password' => Hash::make($request->password),
         ]);
 

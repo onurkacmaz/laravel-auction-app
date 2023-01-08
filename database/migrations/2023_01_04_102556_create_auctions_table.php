@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('auctions', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->timestamp('start_date');
+            $table->timestamp('end_date');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

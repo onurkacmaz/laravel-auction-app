@@ -7,6 +7,10 @@ use Illuminate\View\View;
 class AuctionController extends Controller
 {
     public function index(): View {
-        return view('index');
+        return view('auctions.index');
+    }
+
+    public function show(int $id): View {
+        return view('auctions.show');
     }
 }

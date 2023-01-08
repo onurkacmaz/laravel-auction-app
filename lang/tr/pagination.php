@@ -15,5 +15,5 @@ return [
 
     'previous' => '&laquo; Önceki',
     'next' => 'Sonraki &raquo;',
-
+    'showing_x_to_y_of_z_results' => ':z sonuçtan :x - :y arası gösteriliyor',
 ];

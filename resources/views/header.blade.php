@@ -371,17 +371,31 @@
                 </div>
             </div>
             <div class="order-xl-4 order-3 col-auto col-xl-2">
-                <div class="header-user-buttons">
-                    <div>
-                        <a href="#">
-                            <svg width="40" height="20" viewBox="0 0 40 20" fill="none">
-                                <path d="M4 16L14 9.99998L4 4L4 16Z" fill="white"/>
-                                <path d="M36 16L26 9.99998L36 4L36 16Z" fill="white"/>
-                            </svg>
-                            <span>Al / Sat / Takas Yap</span>
-                        </a>
+                @auth()
+                    <div class="header-menu-container d-flex justify-content-end">
+                        <ul>
+                            <li class="navigation-container">
+                                <a href="{{ route('profile.edit') }}">
+                                    <span class="pr-4">Hesabım</span>
+                                    <i class="fas fa-2x fa-user-circle"></i>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
+                @endauth
+                @guest()
+                    <div class="header-user-buttons">
+                        <div>
+                            <a href="{{route('login')}}">
+                                <svg width="40" height="20" viewBox="0 0 40 20" fill="none">
+                                    <path d="M4 16L14 9.99998L4 4L4 16Z" fill="white"/>
+                                    <path d="M36 16L26 9.99998L36 4L36 16Z" fill="white"/>
+                                </svg>
+                                <span>{{ __('messages.buy_sell_swap') }}</span>
+                            </a>
+                        </div>
+                    </div>
+                @endguest
             </div>
         </div>
     </div>

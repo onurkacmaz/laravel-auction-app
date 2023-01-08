@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Http\Services;
+
+use App\Models\Auction;
+use Carbon\Carbon;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+
+class AuctionService
+{
+    public function getAuctions(): LengthAwarePaginator
+    {
+        return Auction::query()->paginate(Auction::PAGINATION_LIMIT);
+    }
+
+    public function deleteAuction(int $id): void
+    {
+        Auction::query()->where('id', $id)->delete();
+    }
+
+    public function getAuction(int $id): Auction|Model|null
+    {
+        return Auction::query()->where('id', $id)->first();
+    }
+
+    public function updateOrCreate(Request $request, int $id = null): Auction|Model{
+
+        $request->request->set('updated_at', Carbon::now());
+        $request->request->set('start_date', Carbon::parse($request->get('start_date')));
+        $request->request->set('end_date', Carbon::parse($request->get('end_date')));
+
+        return Auction::query()->updateOrCreate(['id' => $id], $request->all());
+    }
+}
