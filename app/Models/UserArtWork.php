@@ -25,6 +25,6 @@ class UserArtWork extends Model
 
     public function artWork(): BelongsTo
     {
-        return $this->belongsTo(ArtWork::class);
+        return $this->belongsTo(ArtWork::class)->withTrashed();
     }
 }

@@ -27,9 +27,16 @@ class AuctionService
 
     public function updateOrCreate(Request $request, int $id = null): Auction|Model{
 
+        $image = json_decode($request->get('image'), true);
+
+        if (!is_null($image)) {
+            $image = sprintf("data:image/png;base64, %s", $image["data"]);
+        }
+
         $request->request->set('updated_at', Carbon::now());
         $request->request->set('start_date', Carbon::parse($request->get('start_date')));
         $request->request->set('end_date', Carbon::parse($request->get('end_date')));
+        $request->request->set('image', $image);
 
         return Auction::query()->updateOrCreate(['id' => $id], $request->all());
     }

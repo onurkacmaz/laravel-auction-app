@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ArtWork extends Model
 {
-    use HasFactory, HasOrder;
+    use HasFactory, HasOrder, SoftDeletes;
 
     protected $table = "art_works";
 
@@ -23,12 +24,12 @@ class ArtWork extends Model
     protected string $orderDirection = 'desc';
 
     public function images(): HasMany {
-        return $this->hasMany(ArtWorkImage::class);
+        return $this->hasMany(ArtWorkImage::class)->withTrashed();
     }
 
     public function auction(): BelongsTo
     {
-        return $this->belongsTo(Auction::class);
+        return $this->belongsTo(Auction::class)->withTrashed();
     }
 
     public function artist(): BelongsTo

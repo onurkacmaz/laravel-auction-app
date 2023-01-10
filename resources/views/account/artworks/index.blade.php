@@ -16,7 +16,7 @@
                         <div class="flex-col justify-between p-4 leading-normal">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ $userArtWork->artwork->title }}</h5>
                             <h5 class="mb-2 font-bold tracking-tight text-gray-900">{{ $userArtWork->artwork->auction->name }}</h5>
-                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 lg:w-80 md:w-30 sm:w-full">{{ Str::limit($userArtWork->artwork->description, 150) }}</p>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 lg:w-80 md:w-30 sm:w-full">{{ strip_tags(Str::limit($userArtWork->artwork->description, 150)) }}</p>
                         </div>
                     </a>
                 @endforeach

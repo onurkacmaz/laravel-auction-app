@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('auctions', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->longText('description')->nullable();
-            $table->timestamp('start_date');
-            $table->timestamp('end_date');
-            $table->boolean('status');
-            $table->timestamps();
+        Schema::table('auctions', function (Blueprint $table) {
+            $table->longText('image')->nullable();
         });
     }
 
@@ -31,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('auctions');
+        Schema::table('auctions', function (Blueprint $table) {
+            $table->dropColumn('image');
+        });
     }
 };

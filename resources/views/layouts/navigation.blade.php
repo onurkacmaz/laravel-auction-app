@@ -13,7 +13,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('admin.index')" :show="Auth::user()->isAdmin()">
+                    <x-nav-link target="_blank" :href="route('admin.index')" :show="Auth::user()->isAdmin()">
                         <b>{{ __('messages.admin_panel') }}</b>
                     </x-nav-link>
                     <x-nav-link :href="route('profile.artworks.index')"
@@ -95,7 +95,7 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('admin.index')"
+                <x-responsive-nav-link target="_blank" :href="route('admin.index')"
                                        :show="Auth::user()->isAdmin()">
                     {{ __('messages.admin_panel') }}
                 </x-responsive-nav-link>

@@ -1,8 +1,8 @@
 import './bootstrap';
-
 import Alpine from 'alpinejs';
-
 import 'font-awesome/css/font-awesome.min.css';
+import './quill'
+import './filepond'
 
 window.Alpine = Alpine;
 

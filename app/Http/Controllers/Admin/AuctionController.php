@@ -6,6 +6,8 @@ use App\Http\Requests\AuctionSaveRequest;
 use App\Http\Services\AuctionService;
 use App\Models\Auction;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class AuctionController

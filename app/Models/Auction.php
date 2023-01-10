@@ -6,10 +6,11 @@ use App\Http\Traits\HasOrder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Auction extends Model
 {
-    use HasFactory, HasOrder;
+    use HasFactory, HasOrder, SoftDeletes;
 
     public const PAGINATION_LIMIT = 10;
 

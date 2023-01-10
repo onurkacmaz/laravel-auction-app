@@ -17,7 +17,7 @@
                                     @foreach($userArtWork->artWork->images as $image)
                                         <div x-show="image === {{ $loop->iteration }}">
                                             <img src="{{$image->path}}"
-                                                 class="h-80 rounded object-cover hover:scale-125 transition ease-in-out delay-150 hover:shadow-2xl hover:shadow-black"
+                                                 class="h-80 rounded hover:object-contain hover:bg-gray-100 object-cover hover:scale-125 transition ease-in-out delay-150 hover:shadow-2xl hover:shadow-black"
                                                  alt="">
                                         </div>
                                     @endforeach
@@ -30,7 +30,7 @@
                                             <button x-on:click="image = {{$key}}"
                                                     :class="{ 'transition ease-in-out delay-150 ring-2 ring-indigo-300 ring-inset': image === {{$key}} }"
                                                     class="focus:outline-none w-full rounded-lg bg-gray-100 flex items-center justify-center p-2">
-                                                <img src="{{$image->path}}" class="h-24 md:h-32 w-full rounded" alt="">
+                                                <img src="{{$image->path}}" class="h-24 object-cover md:h-32 w-full rounded" alt="">
                                             </button>
                                         </div>
                                     @endforeach

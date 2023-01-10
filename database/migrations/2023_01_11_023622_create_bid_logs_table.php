@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('auctions', function (Blueprint $table) {
+        Schema::create('bid_logs', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->longText('description')->nullable();
-            $table->timestamp('start_date');
-            $table->timestamp('end_date');
-            $table->boolean('status');
+            $table->foreignId('art_work_id')->references('id')->on('art_works');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->decimal('bid_amount', 10);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('auctions');
+        Schema::dropIfExists('bid_logs');
     }
 };

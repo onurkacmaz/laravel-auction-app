@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('art_work_images', function (Blueprint $table) {
             $table->id();
-            $table->string('path');
+            $table->longText('path');
             $table->foreignId('art_work_id')->references('id')->on('art_works');
             $table->timestamps();
         });

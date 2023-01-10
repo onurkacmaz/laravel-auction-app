@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* bordered drop area */
+.filepond--panel-root {
+    background-color: transparent;
+    border: 2px solid #2c3340;
+}

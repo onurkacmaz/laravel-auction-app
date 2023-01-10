@@ -13,9 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::table('auctions', function (Blueprint $table) {
+            $table->softDeletes();
+        });
         Schema::table('art_works', function (Blueprint $table) {
-            $table->decimal('start_price', 10);
-            $table->decimal('end_price', 10);
+            $table->softDeletes();
+        });
+        Schema::table('art_work_images', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -26,9 +31,14 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('auctions', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
         Schema::table('art_works', function (Blueprint $table) {
-            $table->dropColumn('start_price');
-            $table->dropColumn('end_price');
+            $table->dropSoftDeletes();
+        });
+        Schema::table('art_work_images', function (Blueprint $table) {
+            $table->dropSoftDeletes();
         });
     }
 };
