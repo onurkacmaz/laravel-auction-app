@@ -18,8 +18,14 @@
 
         <div class="mt-4">
             <x-input-label for="tc_identification_number" :value="__('messages.tc_identification_number')" />
-            <x-text-input id="tc_identification_number" class="block mt-1 w-full" type="text" name="tc_identification_number" :value="old('tc_identification_number')" />
+            <x-text-input id="tc_identification_number" class="block mt-1 w-full" type="text" name="tc_identification_number" :value="old('tc_identification_number')" required />
             <x-input-error :messages="$errors->get('tc_identification_number')" class="mt-2" />
+        </div>
+
+        <div class="mt-4">
+            <x-input-label for="birth_date" :value="__('messages.birth_date')" />
+            <x-text-input id="birth_date" class="block mt-1 w-full" type="date" value="{{ now() }}" name="birth_date" :value="old('birth_date')" required />
+            <x-input-error :messages="$errors->get('birth_date')" class="mt-2" />
         </div>
 
         <!-- Password -->

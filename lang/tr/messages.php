@@ -53,4 +53,6 @@ return [
     'admin_panel' => 'Yönetici Paneli',
     'auctions' => 'Müzayedeler',
     'artists' => 'Sanatçılar',
+    'limit_settings' => 'Limit Ayarları',
+    'birth_date' => 'Doğum Tarihi',
 ];

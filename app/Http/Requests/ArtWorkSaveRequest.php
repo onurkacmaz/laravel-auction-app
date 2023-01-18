@@ -26,8 +26,8 @@ class ArtWorkSaveRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'start_price' => 'required|integer',
-            'end_price' => 'required|integer',
+            'start_price' => 'required|numeric|gt:0',
+            'estimated_market_price' => 'required|numeric|gt:0',
             'artist_id' => 'required|exists:artists,id|integer',
             'status' => 'required|in:1,0',
         ];
@@ -39,9 +39,9 @@ class ArtWorkSaveRequest extends FormRequest
             'title' => 'Eser Adı',
             'description' => 'Açıklama',
             'start_price' => 'Başlangıç Fiyatı',
-            'end_date' => 'Bitiş Fiyatı',
             'status' => 'Durum',
-            'artist_id' => 'Sanatçı'
+            'artist_id' => 'Sanatçı',
+            'estimated_market_price' => 'Tahmini Piyasa Değeri',
         ];
     }
 }

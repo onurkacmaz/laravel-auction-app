@@ -21,7 +21,14 @@
             @if (isset($header))
                 <header class="bg-white shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+                        <div class="flex flex-row">
+                            @if($header->attributes->has('url'))
+                                <a href="{{$header->attributes->get('url')}}" class="text-gray-400 font-bold items-center flex pr-2">
+                                    <i class="fa fa-arrow-circle-left fa-lg pr-2"></i>
+                                </a>
+                            @endif
+                            {{ $header }}
+                        </div>
                     </div>
                 </header>
             @endif

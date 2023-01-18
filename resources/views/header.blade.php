@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Facades\Vite; @endphp
 <header id="header">
     <div class="container">
         <div class="row align-items-center align-items-xl-end">
@@ -5,7 +6,7 @@
                 <div class="logo">
                     <a href="/" aria-label="Logo">
                         <img
-                            src="//st.myideasoft.com/idea/lc/38/themes/selftpl_63a0c6bbd7a25/assets/uploads/logo.png?revision=1672415869"
+                            src="{{ Vite::asset('resources/image/logo.webp') }}"
                             alt="">
                     </a>
                 </div>
@@ -23,174 +24,255 @@
                                     <nav id="navigation">
                                         <div class="category-level-1">
                                             <ul>
-                                                <li class="has-sub-category" data-selector="first-level-navigation">
-                                                    <a href="/kategori/painting" title="Painting">
-                                                        <span>Painting</span>
+                                                <li class=" has-sub-category   active "
+                                                    data-selector="first-level-navigation">
+                                                    <a href="/kategori/painting" title="Temalar">
+                                                        <span>Temalar</span>
                                                     </a>
                                                     <div class="sub-category category-level-2">
                                                         <ul>
                                                             <li class="navigation-category-image">
-                                                                <a href="/kategori/everyday-life" title="Everyday Life">
+                                                                <a href="/kategori/abstract-1" title="Figuratif">
                                                                     <div>
                                                                         <img
-                                                                            src="//st2.myideasoft.com/idea/lc/38/myassets/categories/10/kategori-gorsel.png?revision=1671519584"
-                                                                            alt="Everyday Life"/>
+                                                                            src="//st.myideasoft.com/idea/lc/38/myassets/categories/21/FotoJet.jpg?revision=1673001059"
+                                                                            alt="Figuratif"/>
                                                                     </div>
-                                                                    <span>Everyday Life</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="navigation-category-image">
-                                                                <a href="/kategori/landscape" title="Landscape">
-                                                                    <div>
-                                                                        <img
-                                                                            src="//st2.myideasoft.com/idea/lc/38/myassets/categories/11/kategori-gorsel.png?revision=1671519600"
-                                                                            alt="Landscape"/>
-                                                                    </div>
-                                                                    <span>Landscape</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="navigation-category-image">
-                                                                <a href="/kategori/nude" title="Nude">
-                                                                    <div>
-                                                                        <img
-                                                                            src="//st2.myideasoft.com/idea/lc/38/myassets/categories/12/kategori-gorsel.png?revision=1671519596"
-                                                                            alt="Nude"/>
-                                                                    </div>
-                                                                    <span>Nude</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="navigation-category-image">
-                                                                <a href="/kategori/portrait" title="Portrait">
-                                                                    <div>
-                                                                        <img
-                                                                            src="//st2.myideasoft.com/idea/lc/38/myassets/categories/13/kategori-gorsel.png?revision=1671519589"
-                                                                            alt="Portrait"/>
-                                                                    </div>
-                                                                    <span>Portrait</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="navigation-category-image">
-                                                                <a href="/kategori/still-life" title="Still Life">
-                                                                    <div>
-                                                                        <img
-                                                                            src="//st.myideasoft.com/idea/lc/38/themes/selftpl_63a0c6bbd7a25/assets/uploads/nopic_image.png?revision=1672411836"
-                                                                            alt="Still Life"/>
-                                                                    </div>
-                                                                    <span>Still Life</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="navigation-category-image">
-                                                                <a href="/kategori/street-art" title="Street Art">
-                                                                    <div>
-                                                                        <img
-                                                                            src="//st.myideasoft.com/idea/lc/38/themes/selftpl_63a0c6bbd7a25/assets/uploads/nopic_image.png?revision=1672411836"
-                                                                            alt="Street Art"/>
-                                                                    </div>
-                                                                    <span>Street Art</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="navigation-category-image">
-                                                                <a href="/kategori/abstract" title="Abstract">
-                                                                    <div>
-                                                                        <img
-                                                                            src="//st.myideasoft.com/idea/lc/38/themes/selftpl_63a0c6bbd7a25/assets/uploads/nopic_image.png?revision=1672411836"
-                                                                            alt="Abstract"/>
-                                                                    </div>
-                                                                    <span>Abstract</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="navigation-category-image">
-                                                                <a href="/kategori/fantasy" title="Fantasy">
-                                                                    <div>
-                                                                        <img
-                                                                            src="//st.myideasoft.com/idea/lc/38/themes/selftpl_63a0c6bbd7a25/assets/uploads/nopic_image.png?revision=1672411836"
-                                                                            alt="Fantasy"/>
-                                                                    </div>
-                                                                    <span>Fantasy</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="navigation-category-image">
-                                                                <a href="/kategori/figurative" title="Figurative">
-                                                                    <div>
-                                                                        <img
-                                                                            src="//st.myideasoft.com/idea/lc/38/themes/selftpl_63a0c6bbd7a25/assets/uploads/nopic_image.png?revision=1672411836"
-                                                                            alt="Figurative"/>
-                                                                    </div>
-                                                                    <span>Figurative</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="navigation-category-image">
-                                                                <a href="/kategori/fine-art" title="Fine Art">
-                                                                    <div>
-                                                                        <img
-                                                                            src="//st.myideasoft.com/idea/lc/38/themes/selftpl_63a0c6bbd7a25/assets/uploads/nopic_image.png?revision=1672411836"
-                                                                            alt="Fine Art"/>
-                                                                    </div>
-                                                                    <span>Fine Art</span>
+                                                                    <span>Figuratif</span>
                                                                 </a>
                                                             </li>
                                                             <li class="navigation-category-image">
                                                                 <a href="/kategori/pop-art" title="Pop Art">
                                                                     <div>
                                                                         <img
-                                                                            src="//st.myideasoft.com/idea/lc/38/themes/selftpl_63a0c6bbd7a25/assets/uploads/nopic_image.png?revision=1672411836"
+                                                                            src="//st2.myideasoft.com/idea/lc/38/myassets/categories/20/FotoJet (5).jpg?revision=1673000885"
                                                                             alt="Pop Art"/>
                                                                     </div>
                                                                     <span>Pop Art</span>
                                                                 </a>
                                                             </li>
                                                             <li class="navigation-category-image">
-                                                                <a href="/kategori/abstract-1" title="Abstract">
+                                                                <a href="/kategori/fine-art" title="Nu">
                                                                     <div>
                                                                         <img
-                                                                            src="//st.myideasoft.com/idea/lc/38/themes/selftpl_63a0c6bbd7a25/assets/uploads/nopic_image.png?revision=1672411836"
-                                                                            alt="Abstract"/>
+                                                                            src="//st.myideasoft.com/idea/lc/38/myassets/categories/19/nu.jpg?revision=1673000904"
+                                                                            alt="Nu"/>
                                                                     </div>
-                                                                    <span>Abstract</span>
+                                                                    <span>Nu</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/figurative" title="Perspektif">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st.myideasoft.com/idea/lc/38/myassets/categories/18/pers.jpg?revision=1673000989"
+                                                                            alt="Perspektif"/>
+                                                                    </div>
+                                                                    <span>Perspektif</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/fantasy" title="Siyasi ve Tarihi">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st1.myideasoft.com/idea/lc/38/myassets/categories/17/siyasi.jpg?revision=1673001009"
+                                                                            alt="Siyasi ve Tarihi"/>
+                                                                    </div>
+                                                                    <span>Siyasi ve Tarihi</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/abstract" title="Spiritüel">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st1.myideasoft.com/idea/lc/38/myassets/categories/16/spiritüel.jpg?revision=1673000862"
+                                                                            alt="Spiritüel"/>
+                                                                    </div>
+                                                                    <span>Spiritüel</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/street-art" title="Peyzaj">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st3.myideasoft.com/idea/lc/38/myassets/categories/15/FotoJet (4).jpg?revision=1673001089"
+                                                                            alt="Peyzaj"/>
+                                                                    </div>
+                                                                    <span>Peyzaj</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/still-life" title="Portre">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st3.myideasoft.com/idea/lc/38/myassets/categories/14/portre.jpg?revision=1673001269"
+                                                                            alt="Portre"/>
+                                                                    </div>
+                                                                    <span>Portre</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/portrait" title="Enterior">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st2.myideasoft.com/idea/lc/38/myassets/categories/13/FotoJet (2).jpg?revision=1673001294"
+                                                                            alt="Enterior"/>
+                                                                    </div>
+                                                                    <span>Enterior</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/landscape" title="Hat ve Kaligrafi">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st3.myideasoft.com/idea/lc/38/myassets/categories/11/FotoJet (3).jpg?revision=1673001315"
+                                                                            alt="Hat ve Kaligrafi"/>
+                                                                    </div>
+                                                                    <span>Hat ve Kaligrafi</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/nude" title="Natürmort">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st.myideasoft.com/idea/lc/38/myassets/categories/12/natürmort.jpg?revision=1672998290"
+                                                                            alt="Natürmort"/>
+                                                                    </div>
+                                                                    <span>Natürmort</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/everyday-life" title="Sürrealist">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st.myideasoft.com/idea/lc/38/myassets/categories/10/FotoJet (1).jpg?revision=1673001332"
+                                                                            alt="Sürrealist"/>
+                                                                    </div>
+                                                                    <span>Sürrealist</span>
                                                                 </a>
                                                             </li>
                                                         </ul>
                                                     </div>
                                                 </li>
-                                                <li data-selector="first-level-navigation">
-                                                    <a href="/kategori/sculpture" title="Sculpture">
-                                                        <span>Sculpture</span>
+                                                <li class=" has-sub-category  " data-selector="first-level-navigation">
+                                                    <a href="/kategori/sculpture" title="Teknikler">
+                                                        <span>Teknikler</span>
                                                     </a>
-                                                </li>
-                                                <li data-selector="first-level-navigation">
-                                                    <a href="/kategori/drawing" title="Drawing">
-                                                        <span>Drawing</span>
-                                                    </a>
-                                                </li>
-                                                <li data-selector="first-level-navigation">
-                                                    <a href="/kategori/work-on-paper" title="Work on Paper">
-                                                        <span>Work on Paper</span>
-                                                    </a>
-                                                </li>
-                                                <li data-selector="first-level-navigation">
-                                                    <a href="/kategori/other-media" title="Other Media">
-                                                        <span>Other Media</span>
-                                                    </a>
-                                                </li>
-                                                <li data-selector="first-level-navigation">
-                                                    <a href="/kategori/our-latest-works" title="Our Latest Works">
-                                                        <span>Our Latest Works</span>
-                                                    </a>
-                                                </li>
-                                                <li data-selector="first-level-navigation">
-                                                    <a href="/kategori/explore-more" title="Explore More">
-                                                        <span>Explore More</span>
-                                                    </a>
-                                                </li>
-                                                <li data-selector="first-level-navigation">
-                                                    <a href="/kategori/photography" title="Photography">
-                                                        <span>Photography</span>
-                                                    </a>
-                                                </li>
-                                                <li data-selector="first-level-navigation">
-                                                    <a href="/kategori/fiyat-araligi" title="Fiyat Aralığı">
-                                                        <span>Fiyat Aralığı</span>
-                                                    </a>
+                                                    <div class="sub-category category-level-2">
+                                                        <ul>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/yagli-boya" title="Yağlı Boya">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st2.myideasoft.com/idea/lc/38/myassets/categories/32/yağli.jpg?revision=1673007347"
+                                                                            alt="Yağlı Boya"/>
+                                                                    </div>
+                                                                    <span>Yağlı Boya</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/pastel" title="Pastel">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st1.myideasoft.com/idea/lc/38/myassets/categories/30/pastel.jpg?revision=1673007360"
+                                                                            alt="Pastel"/>
+                                                                    </div>
+                                                                    <span>Pastel</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/akrilik" title="Akrilik">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st1.myideasoft.com/idea/lc/38/myassets/categories/23/akrilik.jpg?revision=1673003226"
+                                                                            alt="Akrilik"/>
+                                                                    </div>
+                                                                    <span>Akrilik</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/test" title="Alkollü Mürekkep">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st1.myideasoft.com/idea/lc/38/myassets/categories/22/mürekkep.jpg?revision=1673002109"
+                                                                            alt="Alkollü Mürekkep"/>
+                                                                    </div>
+                                                                    <span>Alkollü Mürekkep</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/guaj" title="Guaj">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st2.myideasoft.com/idea/lc/38/myassets/categories/24/guaj.jpg?revision=1673003257"
+                                                                            alt="Guaj"/>
+                                                                    </div>
+                                                                    <span>Guaj</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/heykel" title="Heykel">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st2.myideasoft.com/idea/lc/38/myassets/categories/26/heykel (1).jpg?revision=1673003402"
+                                                                            alt="Heykel"/>
+                                                                    </div>
+                                                                    <span>Heykel</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/ilustrasyon" title="İllüstrasyon">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st3.myideasoft.com/idea/lc/38/myassets/categories/25/ilust.jpg?revision=1673005726"
+                                                                            alt="İllüstrasyon"/>
+                                                                    </div>
+                                                                    <span>İllüstrasyon</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/karakalem" title="Karakalem">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st.myideasoft.com/idea/lc/38/myassets/categories/27/kara.jpg?revision=1673005969"
+                                                                            alt="Karakalem"/>
+                                                                    </div>
+                                                                    <span>Karakalem</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/karisik-teknik"
+                                                                   title="Karışık Teknik">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st3.myideasoft.com/idea/lc/38/myassets/categories/28/kar.jpg?revision=1673006429"
+                                                                            alt="Karışık Teknik"/>
+                                                                    </div>
+                                                                    <span>Karışık Teknik</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/murekkep" title="Mürekkep">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st3.myideasoft.com/idea/lc/38/myassets/categories/29/mürekkepğ.jpg?revision=1673006631"
+                                                                            alt="Mürekkep"/>
+                                                                    </div>
+                                                                    <span>Mürekkep</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="navigation-category-image">
+                                                                <a href="/kategori/sulu-boya" title="Sulu Boya">
+                                                                    <div>
+                                                                        <img
+                                                                            src="//st.myideasoft.com/idea/lc/38/myassets/categories/31/sulu (1).jpg?revision=1673007283"
+                                                                            alt="Sulu Boya"/>
+                                                                    </div>
+                                                                    <span>Sulu Boya</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </li>
                                             </ul>
                                         </div>
@@ -211,130 +293,154 @@
                                                 "thirdLevelCategoryCount": 0
                                             }, "categories": [{
                                                 "id": 1,
-                                                "name": "Painting",
+                                                "name": "Temalar",
                                                 "url": "\/kategori\/painting",
-                                                "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1672411836",
+                                                "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1673625689",
                                                 "subCategories": [{
-                                                    "id": 10,
-                                                    "name": "Everyday Life",
-                                                    "url": "\/kategori\/everyday-life",
-                                                    "imageUrl": "\/\/st2.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/10\/kategori-gorsel.png?revision=1671519584",
-                                                    "subCategories": []
-                                                }, {
-                                                    "id": 11,
-                                                    "name": "Landscape",
-                                                    "url": "\/kategori\/landscape",
-                                                    "imageUrl": "\/\/st2.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/11\/kategori-gorsel.png?revision=1671519600",
-                                                    "subCategories": []
-                                                }, {
-                                                    "id": 12,
-                                                    "name": "Nude",
-                                                    "url": "\/kategori\/nude",
-                                                    "imageUrl": "\/\/st2.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/12\/kategori-gorsel.png?revision=1671519596",
-                                                    "subCategories": []
-                                                }, {
-                                                    "id": 13,
-                                                    "name": "Portrait",
-                                                    "url": "\/kategori\/portrait",
-                                                    "imageUrl": "\/\/st2.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/13\/kategori-gorsel.png?revision=1671519589",
-                                                    "subCategories": []
-                                                }, {
-                                                    "id": 14,
-                                                    "name": "Still Life",
-                                                    "url": "\/kategori\/still-life",
-                                                    "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1672411836",
-                                                    "subCategories": []
-                                                }, {
-                                                    "id": 15,
-                                                    "name": "Street Art",
-                                                    "url": "\/kategori\/street-art",
-                                                    "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1672411836",
-                                                    "subCategories": []
-                                                }, {
-                                                    "id": 16,
-                                                    "name": "Abstract",
-                                                    "url": "\/kategori\/abstract",
-                                                    "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1672411836",
-                                                    "subCategories": []
-                                                }, {
-                                                    "id": 17,
-                                                    "name": "Fantasy",
-                                                    "url": "\/kategori\/fantasy",
-                                                    "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1672411836",
-                                                    "subCategories": []
-                                                }, {
-                                                    "id": 18,
-                                                    "name": "Figurative",
-                                                    "url": "\/kategori\/figurative",
-                                                    "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1672411836",
-                                                    "subCategories": []
-                                                }, {
-                                                    "id": 19,
-                                                    "name": "Fine Art",
-                                                    "url": "\/kategori\/fine-art",
-                                                    "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1672411836",
+                                                    "id": 21,
+                                                    "name": "Figuratif",
+                                                    "url": "\/kategori\/abstract-1",
+                                                    "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/21\/FotoJet.jpg?revision=1673001059",
                                                     "subCategories": []
                                                 }, {
                                                     "id": 20,
                                                     "name": "Pop Art",
                                                     "url": "\/kategori\/pop-art",
-                                                    "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1672411836",
+                                                    "imageUrl": "\/\/st2.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/20\/FotoJet (5).jpg?revision=1673000885",
                                                     "subCategories": []
                                                 }, {
-                                                    "id": 21,
-                                                    "name": "Abstract",
-                                                    "url": "\/kategori\/abstract-1",
-                                                    "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1672411836",
+                                                    "id": 19,
+                                                    "name": "Nu",
+                                                    "url": "\/kategori\/fine-art",
+                                                    "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/19\/nu.jpg?revision=1673000904",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 18,
+                                                    "name": "Perspektif",
+                                                    "url": "\/kategori\/figurative",
+                                                    "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/18\/pers.jpg?revision=1673000989",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 17,
+                                                    "name": "Siyasi ve Tarihi",
+                                                    "url": "\/kategori\/fantasy",
+                                                    "imageUrl": "\/\/st1.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/17\/siyasi.jpg?revision=1673001009",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 16,
+                                                    "name": "Spirit\u00fcel",
+                                                    "url": "\/kategori\/abstract",
+                                                    "imageUrl": "\/\/st1.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/16\/spiritu\u0308el.jpg?revision=1673000862",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 15,
+                                                    "name": "Peyzaj",
+                                                    "url": "\/kategori\/street-art",
+                                                    "imageUrl": "\/\/st3.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/15\/FotoJet (4).jpg?revision=1673001089",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 14,
+                                                    "name": "Portre",
+                                                    "url": "\/kategori\/still-life",
+                                                    "imageUrl": "\/\/st3.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/14\/portre.jpg?revision=1673001269",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 13,
+                                                    "name": "Enterior",
+                                                    "url": "\/kategori\/portrait",
+                                                    "imageUrl": "\/\/st2.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/13\/FotoJet (2).jpg?revision=1673001294",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 11,
+                                                    "name": "Hat ve Kaligrafi",
+                                                    "url": "\/kategori\/landscape",
+                                                    "imageUrl": "\/\/st3.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/11\/FotoJet (3).jpg?revision=1673001315",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 12,
+                                                    "name": "Nat\u00fcrmort",
+                                                    "url": "\/kategori\/nude",
+                                                    "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/12\/natu\u0308rmort.jpg?revision=1672998290",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 10,
+                                                    "name": "S\u00fcrrealist",
+                                                    "url": "\/kategori\/everyday-life",
+                                                    "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/10\/FotoJet (1).jpg?revision=1673001332",
                                                     "subCategories": []
                                                 }]
                                             }, {
                                                 "id": 2,
-                                                "name": "Sculpture",
+                                                "name": "Teknikler",
                                                 "url": "\/kategori\/sculpture",
-                                                "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1672411836",
-                                                "subCategories": []
-                                            }, {
-                                                "id": 3,
-                                                "name": "Drawing",
-                                                "url": "\/kategori\/drawing",
-                                                "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1672411836",
-                                                "subCategories": []
-                                            }, {
-                                                "id": 4,
-                                                "name": "Work on Paper",
-                                                "url": "\/kategori\/work-on-paper",
-                                                "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1672411836",
-                                                "subCategories": []
-                                            }, {
-                                                "id": 5,
-                                                "name": "Other Media",
-                                                "url": "\/kategori\/other-media",
-                                                "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1672411836",
-                                                "subCategories": []
-                                            }, {
-                                                "id": 6,
-                                                "name": "Our Latest Works",
-                                                "url": "\/kategori\/our-latest-works",
-                                                "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1672411836",
-                                                "subCategories": []
-                                            }, {
-                                                "id": 7,
-                                                "name": "Explore More",
-                                                "url": "\/kategori\/explore-more",
-                                                "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1672411836",
-                                                "subCategories": []
-                                            }, {
-                                                "id": 8,
-                                                "name": "Photography",
-                                                "url": "\/kategori\/photography",
-                                                "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1672411836",
-                                                "subCategories": []
-                                            }, {
-                                                "id": 9,
-                                                "name": "Fiyat Aral\u0131\u011f\u0131",
-                                                "url": "\/kategori\/fiyat-araligi",
-                                                "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1672411836",
-                                                "subCategories": []
+                                                "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/themes\/selftpl_63a0c6bbd7a25\/assets\/uploads\/nopic_image.png?revision=1673625689",
+                                                "subCategories": [{
+                                                    "id": 32,
+                                                    "name": "Ya\u011fl\u0131 Boya",
+                                                    "url": "\/kategori\/yagli-boya",
+                                                    "imageUrl": "\/\/st2.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/32\/yag\u0306li.jpg?revision=1673007347",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 30,
+                                                    "name": "Pastel",
+                                                    "url": "\/kategori\/pastel",
+                                                    "imageUrl": "\/\/st1.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/30\/pastel.jpg?revision=1673007360",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 23,
+                                                    "name": "Akrilik",
+                                                    "url": "\/kategori\/akrilik",
+                                                    "imageUrl": "\/\/st1.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/23\/akrilik.jpg?revision=1673003226",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 22,
+                                                    "name": "Alkoll\u00fc M\u00fcrekkep",
+                                                    "url": "\/kategori\/test",
+                                                    "imageUrl": "\/\/st1.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/22\/mu\u0308rekkep.jpg?revision=1673002109",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 24,
+                                                    "name": "Guaj",
+                                                    "url": "\/kategori\/guaj",
+                                                    "imageUrl": "\/\/st2.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/24\/guaj.jpg?revision=1673003257",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 26,
+                                                    "name": "Heykel",
+                                                    "url": "\/kategori\/heykel",
+                                                    "imageUrl": "\/\/st2.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/26\/heykel (1).jpg?revision=1673003402",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 25,
+                                                    "name": "\u0130ll\u00fcstrasyon",
+                                                    "url": "\/kategori\/ilustrasyon",
+                                                    "imageUrl": "\/\/st3.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/25\/ilust.jpg?revision=1673005726",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 27,
+                                                    "name": "Karakalem",
+                                                    "url": "\/kategori\/karakalem",
+                                                    "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/27\/kara.jpg?revision=1673005969",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 28,
+                                                    "name": "Kar\u0131\u015f\u0131k Teknik",
+                                                    "url": "\/kategori\/karisik-teknik",
+                                                    "imageUrl": "\/\/st3.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/28\/kar.jpg?revision=1673006429",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 29,
+                                                    "name": "M\u00fcrekkep",
+                                                    "url": "\/kategori\/murekkep",
+                                                    "imageUrl": "\/\/st3.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/29\/mu\u0308rekkepg\u0306.jpg?revision=1673006631",
+                                                    "subCategories": []
+                                                }, {
+                                                    "id": 31,
+                                                    "name": "Sulu Boya",
+                                                    "url": "\/kategori\/sulu-boya",
+                                                    "imageUrl": "\/\/st.myideasoft.com\/idea\/lc\/38\/myassets\/categories\/31\/sulu (1).jpg?revision=1673007283",
+                                                    "subCategories": []
+                                                }]
                                             }]
                                         };
                                     </script>
@@ -342,12 +448,12 @@
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="#">
                                 <span>MÜZAYEDELER</span>
                             </a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="#">
                                 <span>GÜNCEL ETKİNLİKLER</span>
                             </a>
@@ -371,31 +477,34 @@
                 </div>
             </div>
             <div class="order-xl-4 order-3 col-auto col-xl-2">
-                @auth()
-                    <div class="header-menu-container d-flex justify-content-end">
-                        <ul>
-                            <li class="navigation-container">
-                                <a href="{{ route('profile.edit') }}">
-                                    <span class="pr-4">Hesabım</span>
-                                    <i class="fas fa-2x fa-user-circle"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                @endauth
-                @guest()
-                    <div class="header-user-buttons">
-                        <div>
-                            <a href="{{route('login')}}">
-                                <svg width="40" height="20" viewBox="0 0 40 20" fill="none">
-                                    <path d="M4 16L14 9.99998L4 4L4 16Z" fill="white"/>
-                                    <path d="M36 16L26 9.99998L36 4L36 16Z" fill="white"/>
-                                </svg>
-                                <span>{{ __('messages.buy_sell_swap') }}</span>
-                            </a>
+                <div class="header-user-buttons">
+                    @auth()
+                        <div class="header-menu-container d-flex justify-content-end">
+                            <ul>
+                                <li class="navigation-container">
+                                    <a href="{{ route('profile.edit') }}">
+                                        <span class="pr-4">Hesabım</span>
+                                        <i class="fas fa-2x fa-user-circle"></i>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                    </div>
-                @endguest
+                    @endauth
+                    @guest()
+                        <div class="header-user-buttons">
+                            <div>
+                                <a href="{{route('login')}}">
+                                    <svg width="40" height="20" viewBox="0 0 40 20" fill="none">
+                                        <path d="M4 16L14 9.99998L4 4L4 16Z" fill="white"/>
+                                        <path d="M36 16L26 9.99998L36 4L36 16Z" fill="white"/>
+                                    </svg>
+                                    <span>{{ __('messages.buy_sell_swap') }}</span>
+                                </a>
+                            </div>
+                        </div>
+                    @endguest
+
+                </div>
             </div>
         </div>
     </div>

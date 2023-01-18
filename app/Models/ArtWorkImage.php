@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ArtWorkImage extends Model
@@ -12,9 +13,9 @@ class ArtWorkImage extends Model
 
     protected $table = "art_work_images";
     protected $guarded = [];
-    protected $with = [];
 
-    public function artWork() {
+    public function artWork(): BelongsTo
+    {
         return $this->belongsTo(ArtWork::class);
     }
 }

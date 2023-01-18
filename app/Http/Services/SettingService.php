@@ -1,0 +1,56 @@
+<?php
+
+namespace App\Http\Services;
+
+use App\Http\Requests\SettingSaveRequest;
+use App\Models\LimitSetting;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Cache;
+
+class SettingService
+{
+    public const SETTINGS_CACHE_KEY = 'settings';
+    public const SETTING_CACHE_KEY = 'setting';
+    public function getSettings(): LengthAwarePaginator
+    {
+        if (Cache::has(self::SETTINGS_CACHE_KEY)) {
+            return Cache::get(self::SETTINGS_CACHE_KEY);
+        }
+
+        $settings = LimitSetting::query()->paginate(LimitSetting::PAGINATION_LIMIT);
+        Cache::put(self::SETTINGS_CACHE_KEY, $settings);
+
+        return $settings;
+    }
+
+    public function getSetting(int $id): LimitSetting|Model|null
+    {
+        if (Cache::has(self::SETTING_CACHE_KEY)) {
+            return Cache::get(self::SETTING_CACHE_KEY);
+        }
+
+        $setting = LimitSetting::query()->where('id', $id)->first();
+        Cache::put(self::SETTING_CACHE_KEY, $setting);
+
+        return $setting;
+    }
+
+    public function updateOrCreate(SettingSaveRequest $request, null|int $id = null): LimitSetting|Model
+    {
+        $setting = LimitSetting::query()->updateOrCreate([
+            'id' => $id
+        ], $request->all());
+        Cache::delete(self::SETTING_CACHE_KEY);
+        Cache::delete(self::SETTINGS_CACHE_KEY);
+
+        return $setting;
+    }
+
+    public function destroy(int $id): void
+    {
+        LimitSetting::query()->where('id', $id)->delete();
+        Cache::delete(self::SETTING_CACHE_KEY);
+        Cache::delete(self::SETTINGS_CACHE_KEY);
+    }
+}

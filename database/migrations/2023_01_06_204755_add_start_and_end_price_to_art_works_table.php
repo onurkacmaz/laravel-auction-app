@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('art_works', function (Blueprint $table) {
-            $table->decimal('start_price', 10);
-            $table->decimal('end_price', 10);
+            $table->decimal('start_price', 16);
+            $table->decimal('end_price', 16);
         });
     }
 

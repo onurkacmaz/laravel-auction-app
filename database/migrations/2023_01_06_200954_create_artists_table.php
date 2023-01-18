@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('artists', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('bio');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('address');
+            $table->text('bio')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }

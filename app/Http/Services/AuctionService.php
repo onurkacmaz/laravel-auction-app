@@ -40,4 +40,9 @@ class AuctionService
 
         return Auction::query()->updateOrCreate(['id' => $id], $request->all());
     }
+
+    public function getActiveAuction(): Auction|Model|null
+    {
+        return Auction::query()->where('start_date', '<=', Carbon::now())->where('end_date', '>=', Carbon::now())->first();
+    }
 }

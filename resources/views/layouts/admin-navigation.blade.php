@@ -13,11 +13,14 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('admin.auctions.index')" :active="request()->routeIs('admin.auctions.index')">
+                    <x-nav-link :href="route('admin.auctions.index')" :active="request()->routeIs(['admin.auctions.index', 'admin.auctions.new', 'admin.auctions.edit'])">
                         <b>{{ __('messages.auctions') }}</b>
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.artists.index')" :active="request()->routeIs('admin.artists.index')">
+                    <x-nav-link :href="route('admin.artists.index')" :active="request()->routeIs(['admin.artists.index', 'admin.artists.new', 'admin.artists.edit'])">
                         <b>{{ __('messages.artists') }}</b>
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.settings.index')" :active="request()->routeIs(['admin.settings.index', 'admin.settings.new', 'admin.settings.edit'])">
+                        <b>{{ __('messages.limit_settings') }}</b>
                     </x-nav-link>
                 </div>
             </div>
@@ -89,12 +92,15 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('admin.auctions.index')"
-                                       :active="request()->routeIs('admin.auctions.index')">
+                                       :active="request()->routeIs(['admin.auctions.index', 'admin.auctions.new', 'admin.auctions.edit'])">
                     {{ __('messages.auctions') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.artists.index')"
-                                       :active="request()->routeIs('admin.artists.index')">
+                                       :active="request()->routeIs(['admin.artists.index', 'admin.artists.new', 'admin.artists.edit'])">
                     {{ __('messages.artists') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.settings.index')" :active="request()->routeIs(['admin.settings.index', 'admin.settings.new', 'admin.settings.edit'])">
+                    {{ __('messages.limit_settings') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->

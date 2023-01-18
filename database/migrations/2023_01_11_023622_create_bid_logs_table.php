@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('art_work_id')->references('id')->on('art_works');
             $table->foreignId('user_id')->references('id')->on('users');
-            $table->decimal('bid_amount', 10);
+            $table->decimal('bid_amount', 16);
             $table->timestamps();
             $table->softDeletes();
         });

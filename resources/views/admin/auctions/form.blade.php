@@ -1,14 +1,14 @@
-@php use Carbon\Carbon; @endphp
+@php use App\Models\ArtWork;use Carbon\Carbon; @endphp
 <x-admin-layout>
-    <x-slot name="header">
+    <x-slot name="header" :url="route('admin.auctions.index')">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ $auction->name ?: 'Yeni Müzayede' }}
         </h2>
     </x-slot>
     @include('components.errors')
-    <div class="pt-4">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+    <div class="p-4 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 @if($auction->id) lg:grid-cols-2 @endif gap-4">
+            <div class="p-6 bg-white shadow sm:rounded-lg">
                 <form method="post"
                       action="{{ is_null($auction->id) ? route("admin.auctions.save") : route("admin.auctions.save", ['id' => $auction->id]) }}">
                     @csrf
@@ -58,58 +58,65 @@
                         </button>
                     </div>
                 </form>
-
             </div>
-        </div>
-        @if(!is_null($auction->id))
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-4 pb-4">
-            <div class="overflow-hidden p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="flex justify-end">
-                    <a href="{{ route('admin.auctions.artworks.new', ['auction_id' => $auction->id]) }}"
-                       class="bg-indigo-600 text-sm font-bold text-white px-5 py-2.5 rounded">Yeni Ekle</a>
+            @if(!is_null($auction->id))
+                <div class="h-max p-6 bg-white shadow sm:rounded-lg">
+                    <div class="grid grid-cols-2 mb-4">
+                        <h3 class="text-3xl font-bold text-dark">Eserler</h3>
+                        <div class="flex justify-end">
+                            <a href="{{ route('admin.auctions.artworks.new', ['auction_id' => $auction->id]) }}"
+                               class="bg-indigo-600 text-sm font-bold text-white px-5 py-2.5 rounded">Yeni Ekle</a>
+                        </div>
+                    </div>
+                    @if($auction->artWorks->count() > 0)
+                        @php $artWorks = $auction->artWorks()->paginate(ArtWork::PAGINATION_LIMIT); @endphp
+                        <x-table>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th class="text-sm text-left p-4 bg-indigo-50">Resim</th>
+                                    <th class="text-sm text-left p-4 bg-indigo-50">Eser Adı</th>
+                                    <th class="text-sm text-left p-4 bg-indigo-50">Başlangıç Fiyatı</th>
+                                    <th class="text-sm text-left p-4 bg-indigo-50">Verilen Son Teklif</th>
+                                    <th class="text-sm text-center p-4 bg-indigo-50">Düzenle</th>
+                                    <th class="text-sm text-center p-4 bg-indigo-50">Sil</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($artWorks as $artWork)
+                                    <tr class="border-b last:border-b-0">
+                                        <td class="text-sm text-left font-bold p-4 w-28">
+                                            <img src="{{$artWork->images->first()?->path}}"
+                                                 class="h-20 object-scale-down w-20 rounded-full p-2 bg-gray-300" alt="">
+                                        </td>
+                                        <td class="text-sm text-left font-bold p-4">{{$artWork->title}}</td>
+                                        <td class="text-sm text-left font-bold p-4">{{Str::currency($artWork->start_price)}}</td>
+                                        <td class="text-sm text-left font-bold p-4">{{Str::currency($artWork->end_price)}}</td>
+                                        <td class="text-center font-bold p-4">
+                                            <a href="{{ route('admin.auctions.artworks.edit', ['auction_id' => $auction->id, 'id' => $artWork->id]) }}">
+                                                <i class="fa fa-edit text-green-600"></i>
+                                            </a>
+                                        </td>
+                                        <td class="text-center font-bold p-4">
+                                            <a href="{{ route('admin.auctions.artworks.destroy', ['auction_id' => $auction->id, 'id' => $artWork->id]) }}">
+                                                <i class="fa fa-times text-red-600"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </x-table>
+                        @if($artWorks->hasPages() > 0)
+                            <div class="py-4">
+                                {{ $artWorks->onEachSide(0)->links() }}
+                            </div>
+                        @endif
+                    @else
+                        <h3 class="font-bold">Eser bulunamadı.</h3>
+                    @endif
                 </div>
-                <h3 class="text-3xl font-bold text-dark mb-4">Eserler</h3>
-                @if($auction->artWorks->count() > 0)
-                    <table class="max-w-xl lg:max-w-full w-full">
-                        <thead>
-                        <tr>
-                            <th class="hidden sm:block text-sm text-left p-4 bg-indigo-50">Resim</th>
-                            <th class="text-sm text-left p-4 bg-indigo-50">Eser Adı</th>
-                            <th class="text-sm text-left p-4 bg-indigo-50">Başlangıç Fiyatı</th>
-                            <th class="text-sm text-left p-4 bg-indigo-50">Verilen Son Teklif</th>
-                            <th class="text-sm text-center p-4 bg-indigo-50">Düzenle</th>
-                            <th class="text-sm text-center p-4 bg-indigo-50">Sil</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($auction->artWorks as $artWork)
-                            <tr class="border-b">
-                                <td class="hidden sm:block text-sm text-left font-bold p-4 w-28">
-                                    <img src="{{$artWork->images->first()?->path}}"
-                                         class="h-20 object-scale-down w-20 rounded-full p-2 bg-gray-300" alt="">
-                                </td>
-                                <td class="text-sm text-left font-bold p-4">{{$artWork->title}}</td>
-                                <td class="text-sm text-left font-bold p-4">{{Str::currency($artWork->start_price)}}</td>
-                                <td class="text-sm text-left font-bold p-4">{{Str::currency($artWork->end_price)}}</td>
-                                <td class="text-center font-bold p-4">
-                                    <a href="{{ route('admin.auctions.artworks.edit', ['auction_id' => $auction->id, 'id' => $artWork->id]) }}">
-                                        <i class="fa fa-edit text-green-600"></i>
-                                    </a>
-                                </td>
-                                <td class="text-center font-bold p-4">
-                                    <a href="{{ route('admin.auctions.artworks.destroy', ['auction_id' => $auction->id, 'id' => $artWork->id]) }}">
-                                        <i class="fa fa-times text-red-600"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                @else
-                    <h3 class="font-bold">Eser bulunamadı.</h3>
-                @endif
-            </div>
+            @endif
         </div>
-        @endif
     </div>
 </x-admin-layout>

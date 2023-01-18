@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\User;
+use App\Rules\TcIdentifyRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\RequiredIf;
@@ -19,11 +20,13 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => ['string', 'max:255'],
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'birth_date' => ['required', 'date', 'before:today'],
             'tc_identification_number' => [
                 'nullable',
                 'integer',
                 'digits:11',
                 Rule::unique(User::class)->ignore($this->user()->id),
+                new TcIdentifyRule($this->all())
             ],
         ];
     }
@@ -31,7 +34,10 @@ class ProfileUpdateRequest extends FormRequest
     public function attributes(): array
     {
         return [
+            'name' => 'Ad Soyad',
+            'email' => 'E-posta',
             'tc_identification_number' => 'TC Kimlik Numarası',
+            'birth_date' => 'Doğum Tarihi'
         ];
     }
 }

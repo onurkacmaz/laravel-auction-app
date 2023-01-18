@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('auctions', function (Blueprint $table) {
-            $table->dropColumn('start_price');
-            $table->dropColumn('end_price');
+        Schema::create('art_work_favorites', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('art_work_id')->references('id')->on('art_works');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 
@@ -26,9 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('auctions', function (Blueprint $table) {
-            $table->dropColumn('start_price');
-            $table->dropColumn('end_price');
-        });
+        Schema::dropIfExists('art_work_favorites');
     }
 };

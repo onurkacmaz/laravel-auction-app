@@ -7,3 +7,6 @@
     background-color: transparent;
     border: 2px solid #2c3340;
 }
+.swal2-popup {
+    font-size: 1.2rem !important;
+}

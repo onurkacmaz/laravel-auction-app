@@ -13,14 +13,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class ArtWorkService
 {
-    public const ARTWORKS_PER_PAGE = 10;
-
     public function getAllArtWorks(): LengthAwarePaginator
     {
-        return ArtWork::query()->paginate(self::ARTWORKS_PER_PAGE);
+        return ArtWork::query()->paginate(ArtWork::PAGINATION_LIMIT);
     }
 
-    public function getArtWorkById(int $auctionId, int $id): ArtWork|null|Model
+    public function getArtWorkById(int $id): ArtWork|Model|null {
+        return ArtWork::query()->where('id', $id)->first();
+    }
+
+    public function getArtWorkByAuctionIdAndId(int $auctionId, int $id): ArtWork|null|Model
     {
         return ArtWork::query()->where('auction_id', $auctionId)->where('id', $id)->first();
     }
@@ -32,7 +34,7 @@ class ArtWorkService
 
     public function getAllByUser(Authenticatable $user): LengthAwarePaginator
     {
-        return UserArtWork::query()->where('user_id', $user->getAuthIdentifier())->with('artWork')->paginate(self::ARTWORKS_PER_PAGE);
+        return UserArtWork::query()->where('user_id', $user->getAuthIdentifier())->with('artWork')->paginate(ArtWork::PAGINATION_LIMIT);
     }
 
     public function getByUser(int $id, Authenticatable $user): ArtWork|null|Model
@@ -47,6 +49,10 @@ class ArtWorkService
         $request->request->set('updated_at', Carbon::now());
         $request->request->remove('filepond');
         $request->request->remove('images');
+
+        if ($id === null) {
+            $request->request->set('end_price', $request->get('start_price'));
+        }
 
         $artwork = ArtWork::query()->updateOrCreate(['id' => $id, 'auction_id' => $auctionId], $request->all());
 

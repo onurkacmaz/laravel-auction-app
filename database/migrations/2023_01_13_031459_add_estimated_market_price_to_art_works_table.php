@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('slider_images', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('art_works', function (Blueprint $table) {
+            $table->decimal('estimated_market_price', 16);
         });
     }
 
@@ -26,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('slider_images');
+        Schema::table('art_works', function (Blueprint $table) {
+            $table->dropColumn('estimated_market_price');
+        });
     }
 };

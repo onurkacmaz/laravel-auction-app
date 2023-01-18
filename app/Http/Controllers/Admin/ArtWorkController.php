@@ -30,7 +30,7 @@ class ArtWorkController
 
     public function edit(int $auctionId, int $id): View
     {
-        $artWork = $this->artWorkService->getArtWorkById($auctionId, $id);
+        $artWork = $this->artWorkService->getArtWorkByAuctionIdAndId($auctionId, $id);
 
         if (!$artWork) {
             abort(404);

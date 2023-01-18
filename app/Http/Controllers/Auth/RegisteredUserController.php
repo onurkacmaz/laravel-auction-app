@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Rules\TcIdentifyRule;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -33,16 +34,23 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'tc_identification_number' => ['nullable', 'integer', 'digits:11', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', 'min:1']//Rules\Password::defaults()
+            'tc_identification_number' => ['required', 'integer', 'digits:11', 'unique:'.User::class, new TcIdentifyRule($request->all())],
+            'birth_date' => ['required', 'date', 'before:today'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()]
         ], [], [
+            'name' => 'Ad Soyad',
+            'email' => 'E-posta',
             'tc_identification_number' => 'TC Kimlik Numarası',
+            'birth_date' => 'Doğum Tarihi',
+            'password' => 'Şifre',
+            'password_confirmation' => 'Şifre Tekrarı'
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'tc_identification_number' => $request->tc_identification_number ?? null,
+            'tc_identification_number' => $request->tc_identification_number,
+            'birth_date' => $request->birth_date,
             'password' => Hash::make($request->password),
         ]);
 
