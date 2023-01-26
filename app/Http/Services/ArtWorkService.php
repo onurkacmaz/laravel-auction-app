@@ -3,23 +3,24 @@
 namespace App\Http\Services;
 
 use App\Http\Requests\ArtWorkSaveRequest;
+use App\Jobs\NewBid;
 use App\Models\ArtWork;
 use App\Models\ArtWorkImage;
+use App\Models\BidLog;
+use App\Models\User;
 use App\Models\UserArtWork;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Queue;
 
 class ArtWorkService
 {
-    public function getAllArtWorks(): LengthAwarePaginator
-    {
-        return ArtWork::query()->paginate(ArtWork::PAGINATION_LIMIT);
-    }
-
     public function getArtWorkById(int $id): ArtWork|Model|null {
-        return ArtWork::query()->where('id', $id)->first();
+        return ArtWork::query()->where('id', $id)->withTrashed()->first();
     }
 
     public function getArtWorkByAuctionIdAndId(int $auctionId, int $id): ArtWork|null|Model
@@ -68,5 +69,55 @@ class ArtWorkService
         }
 
         return $artwork;
+    }
+
+    public function getSimilarArtWorks(Model|ArtWork $artWork): Collection
+    {
+        if (Cache::has(sprintf("similar_artworks_%s", $artWork->id))) {
+            return Cache::get(sprintf("similar_artworks_%s", $artWork->id));
+        }
+
+        $artWorks = ArtWork::query()->inRandomOrder()->limit(5)->get();
+        Cache::put(sprintf("similar_artworks_%s", $artWork->id), $artWorks);
+
+        return $artWorks;
+    }
+
+    public function search(string $keyword): LengthAwarePaginator
+    {
+        return ArtWork::query()->where('name', 'like', sprintf("%%%s%%", $keyword))->paginate(ArtWork::PAGINATION_LIMIT);
+    }
+
+    public function finishArtWork(BidLog|Model $bid): UserArtWork|Model|null
+    {
+        /** @var Carbon $lastBidCreatedAt */
+        $lastBidCreatedAt = $bid->artWork->created_at;
+        $period = [$lastBidCreatedAt, $lastBidCreatedAt->subMinutes(3)];
+
+        $bids = BidLog::query()->where('art_work_id', $bid->art_work_id)->whereBetween('created_at', $period)->get();
+        if ($bids->count() < 0 || $bid->id === $bid->artWork->bids()->first()->id) {
+            return $this->defineArtWorkToUser($bid);
+        }
+
+        return null;
+    }
+
+    private function defineArtWorkToUser(Model|BidLog $bid): UserArtWork|Model
+    {
+        return UserArtWork::query()->create(['user_id' => $bid->user_id, 'art_work_id' => $bid->art_work_id]);
+    }
+
+    public function sendNewBidMail(BidLog|Model $bid): void
+    {
+        $emails = array_unique(array_merge(
+            $bid->getBidsWithoutThis()->pluck('user.email')->toArray(),
+            $bid->artWork->follows()->whereNot('user_id', $bid->user->id)->get()->pluck('user.email')->toArray()
+        ));
+
+        $users = User::query()->whereIn('email', $emails)->get();
+
+        $users->each(function (User $user) use ($bid) {
+            Queue::push(new NewBid($user, $bid));
+        });
     }
 }

@@ -46,7 +46,7 @@
                                     </a>
                                 </td>
                                 <td class="text-left text-center font-bold p-4">
-                                    <a href="{{ route('admin.auctions.destroy', ['id' => $auction->id]) }}">
+                                    <a class="delete-auction" href="{{ route('admin.auctions.destroy', ['id' => $auction->id]) }}">
                                         <i class="fa fa-times text-red-600"></i>
                                     </a>
                                 </td>

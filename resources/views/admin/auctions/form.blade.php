@@ -71,10 +71,9 @@
                     @if($auction->artWorks->count() > 0)
                         @php $artWorks = $auction->artWorks()->paginate(ArtWork::PAGINATION_LIMIT); @endphp
                         <x-table>
-                            <table>
+                            <table class="w-full">
                                 <thead>
                                 <tr>
-                                    <th class="text-sm text-left p-4 bg-indigo-50">Resim</th>
                                     <th class="text-sm text-left p-4 bg-indigo-50">Eser Adı</th>
                                     <th class="text-sm text-left p-4 bg-indigo-50">Başlangıç Fiyatı</th>
                                     <th class="text-sm text-left p-4 bg-indigo-50">Verilen Son Teklif</th>
@@ -85,10 +84,6 @@
                                 <tbody>
                                 @foreach($artWorks as $artWork)
                                     <tr class="border-b last:border-b-0">
-                                        <td class="text-sm text-left font-bold p-4 w-28">
-                                            <img src="{{$artWork->images->first()?->path}}"
-                                                 class="h-20 object-scale-down w-20 rounded-full p-2 bg-gray-300" alt="">
-                                        </td>
                                         <td class="text-sm text-left font-bold p-4">{{$artWork->title}}</td>
                                         <td class="text-sm text-left font-bold p-4">{{Str::currency($artWork->start_price)}}</td>
                                         <td class="text-sm text-left font-bold p-4">{{Str::currency($artWork->end_price)}}</td>
@@ -98,7 +93,7 @@
                                             </a>
                                         </td>
                                         <td class="text-center font-bold p-4">
-                                            <a href="{{ route('admin.auctions.artworks.destroy', ['auction_id' => $auction->id, 'id' => $artWork->id]) }}">
+                                            <a class="delete-artwork" href="{{ route('admin.auctions.artworks.destroy', ['auction_id' => $auction->id, 'id' => $artWork->id]) }}">
                                                 <i class="fa fa-times text-red-600"></i>
                                             </a>
                                         </td>

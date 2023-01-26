@@ -40,11 +40,10 @@
                         <div class="md:flex-1 px-4">
                             <h2 class="mt-8 lg:mt-0 md:mt-0 mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">{{ $userArtWork->artwork->title }}</h2>
                             <p class="text-gray-500 text-sm"><a
-                                    href="{{ route('auctions.show', ['id' => $userArtWork->artWork->auction->id]) }}"
-                                    class="text-indigo-600 hover:underline">{{ $userArtWork->artwork->auction->name }}</a>
+                                    class="text-indigo-600 hover:underline font-bold">{{ $userArtWork->artwork->auction->name }}</a>
                             </p>
-                            <p class="text-gray-500 text-sm">Sanatçı: <a
-                                    href="{{ route('artists.show', ['id' => $userArtWork->artWork->artist_id]) }}"
+                            <p class="text-gray-500 text-sm mt-2">Sanatçı: <a
+
                                     class="text-indigo-600 hover:underline">{{ $userArtWork->artwork->artist->name }}</a>
                             </p>
 

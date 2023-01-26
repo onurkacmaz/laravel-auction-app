@@ -24,4 +24,13 @@ class BidLog extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function artWork(): BelongsTo
+    {
+        return $this->belongsTo(ArtWork::class);
+    }
+
+    public function getBidsWithoutThis() {
+        return $this->whereNot('user_id', $this->user_id)->get();
+    }
 }

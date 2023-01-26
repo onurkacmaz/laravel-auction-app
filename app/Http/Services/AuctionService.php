@@ -45,4 +45,17 @@ class AuctionService
     {
         return Auction::query()->where('start_date', '<=', Carbon::now())->where('end_date', '>=', Carbon::now())->first();
     }
+
+    public function isLastXMinutes(int $minutes, $date): bool {
+        return Carbon::now()->diffInMinutes($date) <= $minutes;
+    }
+
+    public function extendEndDate(int|Auction|Model $auction, int $minutes): void
+    {
+        if (is_int($auction)) {
+            $auction = $this->getAuction($auction);
+        }
+
+        $auction->update(['end_date' => Carbon::parse($auction->end_date)->addMinutes($minutes)]);
+    }
 }

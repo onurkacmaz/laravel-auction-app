@@ -1,4 +1,4 @@
-@php use App\Models\BidLog;use Carbon\Carbon;use Illuminate\Support\Str; @endphp
+@php use App\Models\BidLog;use Illuminate\Support\Str; @endphp
 <x-admin-layout>
     <x-slot name="header" :url="route('admin.auctions.edit', ['id' => $artWork->auction->id])">
         <h2 class="font-semibold text-2xl text-gray-800 leading-tight">
@@ -84,45 +84,10 @@
                 </form>
             </div>
             @if($artWork->title)
-                <div class="h-max p-6 bg-white shadow sm:rounded-lg">
+                <div class="h-max p-6 bg-white shadow sm:rounded-lg bids text-sm">
                     @if($artWork->bids->count() > 0)
-                        @php $bids = $artWork->bids()->paginate(BidLog::PAGINATION_LIMIT); @endphp
-
-                        <h3 class="text-xl font-bold text-dark mb-4">Tüm Teklifler</h3>
-                        <x-table>
-                            <table class="w-full">
-                                <thead>
-                                <tr>
-                                    <th class="text-sm text-left p-4 bg-indigo-50">Teklif</th>
-                                    <th class="text-sm text-left p-4 bg-indigo-50">Teklif Yapan Kullanıcı</th>
-                                    <th class="text-sm text-left p-4 bg-indigo-50">Teklif Tarihi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($bids as $id => $bid)
-                                    <tr class="border-b last:border-b-0">
-                                        <td class="text-sm text-left font-bold p-4">{{Str::currency($bid->bid_amount)}}</td>
-                                        <td class="text-sm text-left font-bold p-4">{{$bid->user->name}}</td>
-                                        <td class="text-sm text-left font-bold p-4">
-                                    <span
-                                        class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 border border-gray-500">
-  <svg aria-hidden="true" class="w-3 h-3 mr-1 hidden lg:block" fill="currentColor" viewBox="0 0 20 20"
-       xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                                                clip-rule="evenodd"></path></svg>
-  {{Carbon::parse($bid->created_at)->diffForHumans(["parts" => 4])}}
-</span>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </x-table>
-                        @if($bids->hasPages() > 0)
-                            <div class="py-4">
-                                {{ $bids->onEachSide(0)->links() }}
-                            </div>
-                        @endif
+                        @php $bids = $artWork->bids()->simplePaginate(BidLog::PAGINATION_LIMIT); @endphp
+                        @include('components.bids', ['bids' => $bids, 'hideName' => false])
                     @else
                         <h3 class="font-bold">Henüz teklif yapılmadı.</h3>
                     @endif
@@ -130,4 +95,10 @@
             @endif
         </div>
     </div>
+    @section('js')
+        <script>
+            const id = "{{$artWork->id}}";
+        </script>
+        @vite('resources/js/product.js')
+    @endsection
 </x-admin-layout>

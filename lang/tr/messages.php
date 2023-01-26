@@ -55,4 +55,5 @@ return [
     'artists' => 'Sanatçılar',
     'limit_settings' => 'Limit Ayarları',
     'birth_date' => 'Doğum Tarihi',
+    'users' => 'Kullanıcı Yönetimi',
 ];

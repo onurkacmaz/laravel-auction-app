@@ -4,13 +4,17 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    public const PAGINATION_LIMIT = 10;
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +26,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'tc_identification_number',
-        'birth_date'
+        'birth_date',
+        'role_id',
+        'is_admin'
     ];
 
     /**

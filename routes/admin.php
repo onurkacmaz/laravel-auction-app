@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ArtistController;
 use App\Http\Controllers\Admin\ArtWorkController;
 use App\Http\Controllers\Admin\AuctionController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\SettingController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,5 +36,12 @@ Route::name('admin.')->prefix('admin')->group(function () {
         Route::get('/edit/{id}', [SettingController::class, 'edit'])->name('edit');
         Route::post('/save/{id?}', [SettingController::class, 'save'])->name('save');
         Route::get('/delete/{id}', [SettingController::class, 'destroy'])->name('destroy');
+
+    });
+    Route::name('users.')->prefix('users')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('index');
+        Route::get('/edit/{id}', [UserController::class, 'form'])->name('edit');
+        Route::post('/save/{id}', [UserController::class, 'save'])->name('save');
+        Route::get('/delete/{id}', [UserController::class, 'destroy'])->name('destroy');
     });
 });

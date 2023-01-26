@@ -15,7 +15,7 @@ class HomeController extends Controller
         $this->auctionService = $auctionService;
     }
 
-    public function index (): View {
+    public function index(): View {
         $auction = $this->auctionService->getActiveAuction();
 
         if (!is_null($auction)) {
@@ -53,7 +53,7 @@ class HomeController extends Controller
             ];
             /** @var ArtWork $artWork */
             foreach ($groups as $key => $group) {
-                $auction->artWorks()->where('end_price', '>', $group['begin'])->where('end_price', '<', $group['end'])->groupBy( 'end_price', 'id')->each(function ($artWork) use (&$groups, $key) {
+                $auction->artWorks()->whereDoesntHave('userArtWork')->where('end_price', '>', $group['begin'])->where('end_price', '<', $group['end'])->groupBy( 'end_price', 'id')->each(function ($artWork) use (&$groups, $key) {
                     $groups[$key]['artWorks'][] = $artWork;
                 });
             }

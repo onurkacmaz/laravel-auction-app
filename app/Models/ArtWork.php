@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Http\Services\SettingService;
 use App\Http\Traits\HasOrder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ArtWork extends Model
@@ -62,5 +65,28 @@ class ArtWork extends Model
 
     public function followed(): ArtWorkFollow|Model|null {
         return $this->follows()->where('user_id', auth()->id())->first();
+    }
+
+    public function userArtWork(): HasOne
+    {
+        return $this->hasOne(UserArtWork::class);
+    }
+
+    public function minimumBid(): Attribute {
+        return Attribute::make(
+            get: function () {
+                $limitSetting = (new SettingService())->getSettings()->getCollection()->where('start_price', '<', $this->end_price)->where('end_price', '>', $this->end_price)->first();
+                return $this->end_price + $limitSetting?->min_bid_amount ?? 0;
+            }
+        );
+    }
+
+    public function limitValue(): Attribute {
+        return Attribute::make(
+            get: function () {
+                $limitSetting = (new SettingService())->getSettings()->getCollection()->where('start_price', '<', $this->end_price)->where('end_price', '>', $this->end_price)->first();
+                return $limitSetting?->min_bid_amount ?? 0;
+            }
+        );
     }
 }
