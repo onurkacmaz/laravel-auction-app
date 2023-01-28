@@ -197,8 +197,10 @@
                         @endif
                     @endforeach
                     @else
-                        <div>Sonuç bulunamadı.</div>
+                        <div class="p-4 bg-gray-100 mt-10 rounded-lg font-semibold text-xl">Sonuç bulunamadı.</div>
                     @endif
+                @else
+                    <div class="p-4 bg-gray-100 mt-10 rounded-lg font-semibold text-xl">Sonuç bulunamadı.</div>
                 @endif
             </section>
         </div>

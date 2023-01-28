@@ -24,11 +24,12 @@ class SearchController extends Controller
     }
 
     public function search(Request $request): View {
-
         $auction = $this->auctionService->getActiveAuction();
-        $auction->image = null;
 
-        $groups = $this->artWorkService->getArtWorksGrouped($auction, $request->get('q'));
+        if (!is_null($auction)) {
+            $auction->image = null;
+            $groups = $this->artWorkService->getArtWorksGrouped($auction, $request->get('q'));
+        }
 
         return view('index', [
             'title' => sprintf('Arama Sonuçları - %s', $request->filled('q') ? Str::inlineMarkdown("**" . $request->get('q') . "**") : null),
