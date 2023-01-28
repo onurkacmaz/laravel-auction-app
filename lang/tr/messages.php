@@ -57,4 +57,5 @@ return [
     'birth_date' => 'Doğum Tarihi',
     'users' => 'Kullanıcı Yönetimi',
     'artwork-groups' => 'Anasayfa Eser Grupları',
+    'my_bids' => 'Tekliflerim',
 ];

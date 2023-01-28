@@ -4,7 +4,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import './quill'
 import './filepond'
 import jQuery from 'jquery';
-import Swal, { Toast } from './sweeralert'
+import Swal, {Toast} from './sweeralert'
 
 window.$ = window.jQuery = jQuery;
 
@@ -88,5 +88,14 @@ $('.bidding').on('click', function (e) {
             icon: 'error',
             title: e.response.data.message
         })
+    })
+});
+
+$('#bids-search').keyup(function () {
+    const q = $(this).val()
+    const params = new URLSearchParams(window.location.search);
+    params.set('q', q)
+    axios.get('/account/my-bids?' + params.toString()).then(r => {
+        $('.my-bids').html(r.data.html)
     })
 });

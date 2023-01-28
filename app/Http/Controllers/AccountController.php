@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Services\ArtWorkService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -73,6 +74,22 @@ class AccountController extends Controller
     public function artworks(): View {
         $userArtWorks = $this->artWorkService->getAllByUser(Auth::user());
         return view('account.artworks.index', ['userArtWorks' => $userArtWorks]);
+    }
+
+    public function myBids(Request $request): View|JsonResponse {
+        $bids = $this->artWorkService->getBidsByUser(Auth::user(), $request->get('q'), $request->get('page'));
+
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('components.my-bids', [
+                    'bids' => $bids,
+                ])->render(),
+            ]);
+        }
+
+        return view('account.my-bids.index', [
+            'bids' => $bids,
+        ]);
     }
 
     public function artwork(int $id): View {

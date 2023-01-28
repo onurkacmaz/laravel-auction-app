@@ -21,6 +21,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/', [AccountController::class, 'artworks'])->name('index');
             Route::get('/{id}', [AccountController::class, 'artwork'])->name('show');
         });
+        Route::name('my-bids.')->prefix('my-bids')->group(function () {
+            Route::get('/', [AccountController::class, 'myBids'])->name('index');
+        });
     });
 });
 

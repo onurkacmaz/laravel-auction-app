@@ -141,4 +141,11 @@ class ArtWorkService
     public function getArtworkGroups(): Collection {
         return ArtWorkGroup::query()->get();
     }
+
+    public function getBidsByUser(Authenticatable $user, string|null $q = null, int $page = 1): LengthAwarePaginator
+    {
+        return BidLog::query()->whereHas('artWork', function ($query) use ($q) {
+            return $query->where('title', 'like', '%' . $q . '%');
+        })->where('user_id', $user->getAuthIdentifier())->with('artWork')->paginate(ArtWork::PAGINATION_LIMIT, ['*'], 'page', is_null($q) ? $page : 1);
+    }
 }
