@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ArtistController;
 use App\Http\Controllers\Admin\ArtWorkController;
+use App\Http\Controllers\Admin\ArtWorkGroupController;
 use App\Http\Controllers\Admin\AuctionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\SettingController;
@@ -36,6 +37,14 @@ Route::name('admin.')->prefix('admin')->group(function () {
         Route::get('/edit/{id}', [SettingController::class, 'edit'])->name('edit');
         Route::post('/save/{id?}', [SettingController::class, 'save'])->name('save');
         Route::get('/delete/{id}', [SettingController::class, 'destroy'])->name('destroy');
+
+    });
+    Route::name('artwork-groups.')->prefix('artwork-groups')->group(function () {
+        Route::get('/', [ArtWorkGroupController::class, 'index'])->name('index');
+        Route::get('/new', [ArtWorkGroupController::class, 'new'])->name('new');
+        Route::get('/edit/{id}', [ArtWorkGroupController::class, 'edit'])->name('edit');
+        Route::post('/save/{id?}', [ArtWorkGroupController::class, 'save'])->name('save');
+        Route::get('/delete/{id}', [ArtWorkGroupController::class, 'destroy'])->name('destroy');
 
     });
     Route::name('users.')->prefix('users')->group(function () {

@@ -326,7 +326,7 @@
                                             <div class="showcase-image">
                                                 <a href="{{ route('auctions.artworks.show', ['id' => $similarArtWork->id]) }}"
                                                    title="{{ $similarArtWork->title }}">
-                                                    <img src="{{ $similarArtWork->images->first()->path }}"
+                                                    <img src="{{ $similarArtWork->images->first()->path ?? null }}"
                                                          alt="{{ $similarArtWork->title }}">
                                                 </a>
                                             </div>

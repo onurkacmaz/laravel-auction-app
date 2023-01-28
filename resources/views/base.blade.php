@@ -16,7 +16,7 @@
     <link rel='icon' href='{{Vite::asset('resources/image/favicon.ico')}}' type='image/x-icon'>
     <link rel='shortcut icon' href='{{Vite::asset('resources/image/favicon.ico')}}' type='image/x-icon'>
     <script type="text/javascript">var visitor = {}, mainCurrency = 'TL', menuItems = [], route = {group: 'default', name: 'entry'};</script>
-    @vite(['resources/js/app.js', 'resources/css/app.css'])
+    @vite(['resources/js/app.js', 'resources/css/app.css', 'resources/js/notification.js'])
     <link rel='stylesheet' type='text/css' href='//st1.myideasoft.com/7.2.4.8/storefront/assets/css/global.css?revision=7.2.4.8-10' />
     <link rel='stylesheet' type='text/css' href='//st2.myideasoft.com/idea/lc/38/themes/selftpl_63a0c6bbd7a25/assets/css/theme.css?revision=7.2.4.8-10-1674554005' />
     <script type='text/javascript' src='//st2.myideasoft.com/7.2.4.8/storefront/assets/javascript/vendor/jquery-3.2.1.min.js?revision=7.2.4.8-10'></script>
@@ -45,18 +45,10 @@
 <script type="text/javascript" src="//st.myideasoft.com/idea/lc/38/themes/selftpl_63a0c6bbd7a25/assets/javascript/lazyload.min.js?revision=7.2.4.8-10-1674554005"></script>
 <script type='text/javascript' src='//st2.myideasoft.com/7.2.4.8/storefront/assets/javascript/vendor/combined-base.min.js?revision=7.2.4.8-10'></script>
 <script type="text/javascript" src="//st2.myideasoft.com/7.2.4.8/storefront/assets/javascript/layout/default.js?revision=7.2.4.8-10"></script>
-
-<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-<script>
-    window.OneSignal = window.OneSignal || [];
-    OneSignal.push(function() {
-        OneSignal.init({
-            appId: "0ca88ec3-cf2a-44cb-a0e6-a7c6a25c8146",
-        });
-    });
-</script>
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"></script>
 <script>
     window.isLoggedId = {{auth()->check() ? 'true' : 'false'}};
+    window.userId = {{auth()->check() ? auth()->user()->id : 'null'}};
 </script>
 @yield('js')
 </html>

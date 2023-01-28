@@ -20,7 +20,7 @@ class OneSignalChannel
         /** @var OneSignalMessage $message */
         $message = $notification->toPushNotification($notifiable);
         $this->oneSignalService->call(Request::METHOD_POST, 'notifications', [
-            'included_segments' => $message->getIncludedSegments(),
+            'include_external_user_ids' => $message->getExternalUserIds(),
             'headings' => $message->getHeadings(),
             'contents' => $message->getContents()
         ]);

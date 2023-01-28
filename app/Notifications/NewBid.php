@@ -74,6 +74,6 @@ class NewBid extends Notification
                 'tr' => sprintf("Daha önce pey verdiğiniz %s adlı esere yeni bir pey verildi.", $this->bid->artWork->title),
                 'en' => sprintf("A new bid has been placed on the artwork %s that you have bid on.", $this->bid->artWork->title)
             ])
-            ->setIncludedSegments(["Subscribed Users"]);
+            ->setExternalUserIds([(string)$notifiable->id]);
     }
 }

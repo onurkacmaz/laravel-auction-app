@@ -13,6 +13,7 @@ export default defineConfig({
                 'resources/js/product.js',
                 'resources/js/auction.js',
                 'resources/js/artwork.js',
+                'resources/js/notification.js',
             ],
             refresh: true,
             valetTls: true,

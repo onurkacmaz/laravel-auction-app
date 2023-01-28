@@ -85,12 +85,8 @@
             </div>
             @if($artWork->title)
                 <div class="h-max p-6 bg-white shadow sm:rounded-lg bids text-sm">
-                    @if($artWork->bids->count() > 0)
-                        @php $bids = $artWork->bids()->simplePaginate(BidLog::PAGINATION_LIMIT); @endphp
-                        @include('components.bids', ['bids' => $bids, 'hideName' => false])
-                    @else
-                        <h3 class="font-bold">Henüz teklif yapılmadı.</h3>
-                    @endif
+                    @php $bids = $artWork->bids()->simplePaginate(BidLog::PAGINATION_LIMIT); @endphp
+                    @include('components.bids', ['bids' => $bids, 'hideName' => false])
                 </div>
             @endif
         </div>

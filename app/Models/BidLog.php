@@ -31,6 +31,6 @@ class BidLog extends Model
     }
 
     public function getBidsWithoutThis() {
-        return $this->whereNot('user_id', $this->user_id)->get();
+        return $this->whereNot('user_id', $this->user_id)->where('art_work_id', $this->art_work_id);
     }
 }

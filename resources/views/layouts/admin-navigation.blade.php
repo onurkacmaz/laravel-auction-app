@@ -22,6 +22,9 @@
                     <x-nav-link :href="route('admin.settings.index')" :active="request()->routeIs(['admin.settings.index', 'admin.settings.new', 'admin.settings.edit'])">
                         <b>{{ __('messages.limit_settings') }}</b>
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.artwork-groups.index')" :active="request()->routeIs(['admin.artwork-groups.index', 'admin.artwork-groups.new', 'admin.artwork-groups.edit'])">
+                        <b>{{ __('messages.artwork-groups') }}</b>
+                    </x-nav-link>
                     <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs(['admin.users.index', 'admin.users.new', 'admin.users.edit'])">
                         <b>{{ __('messages.users') }}</b>
                     </x-nav-link>
@@ -101,6 +104,9 @@
                 <x-responsive-nav-link :href="route('admin.artists.index')"
                                        :active="request()->routeIs(['admin.artists.index', 'admin.artists.new', 'admin.artists.edit'])">
                     {{ __('messages.artists') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.artwork-groups.index')" :active="request()->routeIs(['admin.artwork-groups.index', 'admin.artwork-groups.new', 'admin.artwork-groups.edit'])">
+                    {{ __('messages.artwork-groups') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.settings.index')" :active="request()->routeIs(['admin.settings.index', 'admin.settings.new', 'admin.settings.edit'])">
                     {{ __('messages.limit_settings') }}

@@ -1,8 +1,8 @@
-@php use Illuminate\Support\Str; @endphp
 @if($notifications->count() > 0)
     @foreach($notifications as $notification)
         <a href="{{$notification->data['url'] ?? '#'}}"
            data-id="{{$notification->id}}"
+           data-read="{{$notification->read()}}"
            class="notification-item flex flex-row bg-gray-100 hover:bg-gray-200 transition-all rounded-2xl p-4 mt-4 {{!$notification->read() ? 'bg-gray-300' : null}}">
             <div class="justify-center items-center flex flex-[0.2]">
                 <img width="50" class="object-contain rounded-full bg-gray-100"
@@ -12,7 +12,7 @@
                 <div>
                     <b>{{$notification->data['title'] ?? null}}</b>
                 </div>
-                <div class="mt-2 font-semibold">{{Str::limit($notification->data['message'] ?? null, 90)}}</div>
+                <div class="mt-2 font-semibold">{{$notification->data['message']}}</div>
             </div>
         </a>
     @endforeach

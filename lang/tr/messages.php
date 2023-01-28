@@ -56,4 +56,5 @@ return [
     'limit_settings' => 'Limit Ayarları',
     'birth_date' => 'Doğum Tarihi',
     'users' => 'Kullanıcı Yönetimi',
+    'artwork-groups' => 'Anasayfa Eser Grupları',
 ];

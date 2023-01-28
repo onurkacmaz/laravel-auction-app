@@ -5,7 +5,9 @@ namespace App\Http\Services;
 use App\Http\Requests\ArtWorkSaveRequest;
 use App\Jobs\NewBid;
 use App\Models\ArtWork;
+use App\Models\ArtWorkGroup;
 use App\Models\ArtWorkImage;
+use App\Models\Auction;
 use App\Models\BidLog;
 use App\Models\User;
 use App\Models\UserArtWork;
@@ -19,6 +21,21 @@ use Illuminate\Support\Facades\Queue;
 
 class ArtWorkService
 {
+    public function getArtWorksGrouped(Auction|Model $auction, null|string $q = null): array {
+        $groups = [];
+
+        foreach ($this->getArtworkGroups() as $key => $group) {
+            $auction->artWorks()->when(!is_null($q), function ($query) use ($q) {
+                return $query->where('title', 'like', '%' . $q . '%');
+            })->grouped($group)->each(function ($artWork) use (&$groups, $key, $group) {
+                $groups[$key]['artWorks'][] = $artWork;
+                $groups[$key]['title'] = $group->title;
+            });
+        }
+
+        return $groups;
+    }
+
     public function getArtWorkById(int $id): ArtWork|Model|null {
         return ArtWork::query()->where('id', $id)->withTrashed()->first();
     }
@@ -77,7 +94,7 @@ class ArtWorkService
             return Cache::get(sprintf("similar_artworks_%s", $artWork->id));
         }
 
-        $artWorks = ArtWork::query()->inRandomOrder()->limit(5)->get();
+        $artWorks = ArtWork::query()->whereDoesntHave('userArtWork')->inRandomOrder()->limit(5)->get();
         Cache::put(sprintf("similar_artworks_%s", $artWork->id), $artWorks);
 
         return $artWorks;
@@ -110,7 +127,7 @@ class ArtWorkService
     public function sendNewBidMail(BidLog|Model $bid): void
     {
         $emails = array_unique(array_merge(
-            $bid->getBidsWithoutThis()->pluck('user.email')->toArray(),
+            $bid->getBidsWithoutThis()->get()->pluck('user.email')->toArray(),
             $bid->artWork->follows()->whereNot('user_id', $bid->user->id)->get()->pluck('user.email')->toArray()
         ));
 
@@ -119,5 +136,9 @@ class ArtWorkService
         $users->each(function (User $user) use ($bid) {
             Queue::push(new NewBid($user, $bid));
         });
+    }
+
+    public function getArtworkGroups(): Collection {
+        return ArtWorkGroup::query()->get();
     }
 }

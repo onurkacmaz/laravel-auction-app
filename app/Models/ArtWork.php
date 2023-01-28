@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Http\Services\SettingService;
 use App\Http\Traits\HasOrder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -88,5 +89,9 @@ class ArtWork extends Model
                 return $limitSetting?->min_bid_amount ?? 0;
             }
         );
+    }
+
+    public function scopeGrouped($query, ArtWorkGroup|Model $group): Builder {
+        return $query->whereDoesntHave('userArtWork')->where('end_price', '>', $group->begin)->where('end_price', '<', $group->end)->groupBy( 'end_price', 'id');
     }
 }

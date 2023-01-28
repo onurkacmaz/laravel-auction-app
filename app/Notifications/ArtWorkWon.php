@@ -80,6 +80,6 @@ class ArtWorkWon extends Notification
                 'tr' => sprintf('Teklif verdiğiniz %s adlı eser için teklif süresi sona erdi ve kazandınız.', $this->bid->artWork->title),
                 'en' => sprintf('The bidding period for the %s art you bid on has ended and you won.', $this->bid->artWork->title)
             ])
-            ->setIncludedSegments(["Subscribed Users"]);
+            ->setExternalUserIds([(string)$notifiable->id]);
     }
 }

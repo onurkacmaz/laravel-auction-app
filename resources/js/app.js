@@ -5,7 +5,6 @@ import './quill'
 import './filepond'
 import jQuery from 'jquery';
 import Swal, { Toast } from './sweeralert'
-import './notification'
 
 window.$ = window.jQuery = jQuery;
 
