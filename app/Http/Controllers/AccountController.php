@@ -77,7 +77,7 @@ class AccountController extends Controller
     }
 
     public function myBids(Request $request): View|JsonResponse {
-        $bids = $this->artWorkService->getBidsByUser(Auth::user(), $request->get('q'), $request->get('page'));
+        $bids = $this->artWorkService->getBidsByUser(Auth::user(), $request->get('q'), $request->get('page', 1));
 
         if ($request->ajax()) {
             return response()->json([
