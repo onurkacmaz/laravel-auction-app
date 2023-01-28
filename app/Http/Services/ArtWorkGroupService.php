@@ -27,12 +27,12 @@ class ArtWorkGroupService
 
     public function getGroup(int $id): ArtWorkGroup|Model|null
     {
-        if (Cache::has(self::GROUP_CACHE_KEY)) {
-            return Cache::get(self::GROUP_CACHE_KEY);
+        if (Cache::has(sprintf("%s.%s", self::GROUP_CACHE_KEY, $id))) {
+            return Cache::get(sprintf("%s.%s", self::GROUP_CACHE_KEY, $id));
         }
 
         $group = ArtWorkGroup::query()->where('id', $id)->first();
-        Cache::put(self::GROUP_CACHE_KEY, $group);
+        Cache::put(sprintf("%s.%s", self::GROUP_CACHE_KEY, $id), $group);
 
         return $group;
     }
@@ -42,7 +42,7 @@ class ArtWorkGroupService
         $group = ArtWorkGroup::query()->updateOrCreate([
             'id' => $id
         ], $request->all());
-        Cache::delete(self::GROUP_CACHE_KEY);
+        Cache::delete(sprintf("%s.%s", self::GROUP_CACHE_KEY, $id));
         Cache::delete(self::GROUPS_CACHE_KEY);
 
         return $group;
@@ -51,7 +51,7 @@ class ArtWorkGroupService
     public function destroy(int $id): void
     {
         ArtWorkGroup::query()->where('id', $id)->delete();
-        Cache::delete(self::GROUP_CACHE_KEY);
+        Cache::delete(sprintf("%s.%s", self::GROUP_CACHE_KEY, $id));
         Cache::delete(self::GROUPS_CACHE_KEY);
     }
 }
