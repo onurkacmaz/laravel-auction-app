@@ -26,12 +26,12 @@ class SettingService
 
     public function getSetting(int $id): LimitSetting|Model|null
     {
-        if (Cache::has(self::SETTING_CACHE_KEY)) {
-            return Cache::get(self::SETTING_CACHE_KEY);
+        if (Cache::has(sprintf("%s.%s", self::SETTING_CACHE_KEY, $id))) {
+            return Cache::get(sprintf("%s.%s", self::SETTING_CACHE_KEY, $id));
         }
 
         $setting = LimitSetting::query()->where('id', $id)->first();
-        Cache::put(self::SETTING_CACHE_KEY, $setting);
+        Cache::put(sprintf("%s.%s", self::SETTING_CACHE_KEY, $id), $setting);
 
         return $setting;
     }
@@ -41,7 +41,7 @@ class SettingService
         $setting = LimitSetting::query()->updateOrCreate([
             'id' => $id
         ], $request->all());
-        Cache::delete(self::SETTING_CACHE_KEY);
+        Cache::delete(sprintf("%s.%s", self::SETTING_CACHE_KEY, $id));
         Cache::delete(self::SETTINGS_CACHE_KEY);
 
         return $setting;
@@ -50,7 +50,7 @@ class SettingService
     public function destroy(int $id): void
     {
         LimitSetting::query()->where('id', $id)->delete();
-        Cache::delete(self::SETTING_CACHE_KEY);
+        Cache::delete(sprintf("%s.%s", self::SETTING_CACHE_KEY, $id));
         Cache::delete(self::SETTINGS_CACHE_KEY);
     }
 }
