@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\GeneralSetting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class GeneralSettingController extends Controller
@@ -26,6 +27,8 @@ class GeneralSettingController extends Controller
             $setting->value = $request->input($setting->key);
             $setting->save();
         }
+
+        Cache::put('generalSettings', GeneralSetting::all()->pluck('value', 'key')->toArray());
 
         return redirect()->route('admin.general-settings.edit');
     }
