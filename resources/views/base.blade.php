@@ -8,6 +8,12 @@
     <meta name='description' content="{{config("app.name")}}"/>
     <meta name='keywords' content="{{config("app.name")}}"/>
     <meta name='title' content="{{config("app.name")}}"/>
+
+    <meta name="robots" content="noindex, follow" />
+    <meta name="robots" content="none" />
+    <meta name="googlebot" content="noindex">
+    <meta name="googlebot-news" content="nosnippet">
+
     <meta name="viewport"
           content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no, minimal-ui"/>
     <link rel='canonical' href='{{ config("app.url") }}'/>
