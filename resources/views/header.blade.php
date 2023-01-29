@@ -75,7 +75,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="https://sergikur.com/">
+                            <a target="_blank" href="https://sergikur.com/">
                                 <span>GÜNCEL ETKİNLİKLER</span>
                             </a>
                         </li>
