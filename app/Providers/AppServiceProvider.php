@@ -7,7 +7,10 @@ use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
@@ -49,7 +52,14 @@ class AppServiceProvider extends ServiceProvider
                 ->greeting('Merhaba!')
                 ->subject('Email Adresinizi Doğrulayın')
                 ->line('Butona tıklayarak email adresinizi doğrulayabilirsiniz.')
-                ->action('Doğrula', $url);
+                ->action('Doğrula', URL::temporarySignedRoute(
+                    'verification.verify',
+                    Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60)),
+                    [
+                        'id' => $notifiable->getKey(),
+                        'hash' => sha1($notifiable->getEmailForVerification()),
+                    ]
+                ));
         });
 
         ResetPassword::toMailUsing(function ($notifiable, $url) {
@@ -57,7 +67,10 @@ class AppServiceProvider extends ServiceProvider
                 ->greeting('Merhaba!')
                 ->subject('Şifre Sıfırlama')
                 ->line('Bu e-postayı, hesabınız için bir şifre sıfırlama talebi aldığımız için alıyorsunuz.')
-                ->action('Sıfırla', $url)
+                ->action('Sıfırla', url(route('password.reset', [
+                    'token' => $url,
+                    'email' => $notifiable->getEmailForPasswordReset(),
+                ], false)))
                 ->line('Bu parola sıfırlama bağlantısının süresi 60 dakika içinde dolacak.')
                 ->line('Parola sıfırlama talebinde bulunmadıysanız başka bir işlem yapmanız gerekmez.');
         });
