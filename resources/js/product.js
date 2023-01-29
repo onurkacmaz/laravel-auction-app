@@ -5,11 +5,14 @@ import jQuery from 'jquery';
 import 'slick-carousel'
 
 window.$ = window.jQuery = jQuery;
-setInterval(function () {
-    axios.get('/auctions/product/' + id + '/bids' + window.location.search).then(r => {
-        $('.bids').html(r.data.data.html)
-    })
-}, 3000)
+
+if (!isEnded) {
+    setInterval(function () {
+        axios.get('/auctions/product/' + id + '/bids' + window.location.search).then(r => {
+            $('.bids').html(r.data.data.html)
+        })
+    }, 3000)
+}
 
 new PhotoSwipeLightbox({
     gallery: '#product-primary-image',

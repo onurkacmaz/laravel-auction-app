@@ -60,7 +60,7 @@ class IdeaSoftService
             $data = json_decode($request->getBody()->getContents(), true);
 
             if (isset($data['error']) && isset($data['error_description'])) {
-                throw new Exception($data['error_description']);
+                return [];
             }
 
             $data = $this->prepareCategories($data);
@@ -69,7 +69,7 @@ class IdeaSoftService
 
             return $data;
         } catch (GuzzleException $e) {
-            throw new Exception($e->getMessage());
+            return [];
         }
     }
 

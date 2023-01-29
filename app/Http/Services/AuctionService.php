@@ -58,4 +58,9 @@ class AuctionService
 
         $auction->update(['end_date' => Carbon::parse($auction->end_date)->addMinutes($minutes)]);
     }
+
+    public function getArchivedAuctions(): LengthAwarePaginator
+    {
+        return Auction::query()->where('status', true)->where('end_date', '<', Carbon::now())->paginate(Auction::PAGINATION_LIMIT);
+    }
 }

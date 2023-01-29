@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::name('auctions.')->prefix('auctions')->group(function () {
-    Route::get('/', [AuctionController::class, 'index'])->name('index');
     Route::get('/{id}', [AuctionController::class, 'show'])->name('show');
     Route::name('artworks.')->prefix('product')->group(function () {
+        Route::get('/', [ArtworkController::class, 'index'])->name('index');
         Route::get('/{id}', [ArtworkController::class, 'show'])->name('show');
         Route::get('/{id}/bids', [ArtWorkController::class, 'bids'])->name('bids');
         Route::post('/{id}/bidding', [ArtworkController::class, 'bidding'])->name('bidding');
@@ -35,3 +35,5 @@ Route::get('search', [SearchController::class, 'search'])->name('search');
 
 Route::get('authorize', [IdeaSoftService::class, 'authorize'])->name('ideasoft.authorize');
 Route::get('themes', [IdeaSoftService::class, 'getThemeSettings'])->name('ideasoft.themes');
+
+Route::get('archive', [AuctionController::class, 'archive'])->name('archive');
