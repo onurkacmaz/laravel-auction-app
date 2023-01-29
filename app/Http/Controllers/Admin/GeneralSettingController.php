@@ -25,7 +25,7 @@ class GeneralSettingController extends Controller
 
         foreach ($settings as $setting) {
             if ($setting->key === "footer") {
-                $request->request->set($setting->key, str_replace('href="/', 'href="https://sergikurartcenter.com/', $request->input($setting->key)));
+                $request->request->set($setting->key, preg_replace('/<a href="(.+)">/', '/<a href="https://sergikurartcenter.com$1">/', $request->input($setting->key)));
             }
             $setting->value = $request->input($setting->key);
             $setting->save();
