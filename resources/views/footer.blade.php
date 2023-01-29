@@ -57,6 +57,9 @@
                     </div>
                 </div>
                 <div class="col-md-2">
+                    <div class="footer-QR">
+                        <img src="//st1.myideasoft.com/idea/lc/38/themes/selftpl_63a0c6bbd7a25/assets/uploads/footer_QR_image.png?revision=7.2.4.8-10-1674554005" alt="">
+                    </div>
                 </div>
                 <div class="col-md-2">
                     <div id="ETBIS">
