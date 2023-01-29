@@ -24,6 +24,9 @@ class GeneralSettingController extends Controller
         $settings = GeneralSetting::query()->whereIn('key', array_keys($request->all()))->get();
 
         foreach ($settings as $setting) {
+            if ($setting->key === "footer") {
+                $request->request->set($setting->key, str_replace('href="', 'href="https://sergikurartcenter.com', $request->input($setting->key)));
+            }
             $setting->value = $request->input($setting->key);
             $setting->save();
         }
