@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\GeneralSetting;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+
+class GeneralSettingController extends Controller
+{
+    public function form(): View
+    {
+        $settings = GeneralSetting::query()->get();
+
+        return view('admin.general-settings.form', [
+            'settings' => $settings
+        ]);
+    }
+
+    public function save(Request $request): RedirectResponse {
+        $settings = GeneralSetting::query()->whereIn('key', array_keys($request->all()))->get();
+
+        foreach ($settings as $setting) {
+            $setting->value = $request->input($setting->key);
+            $setting->save();
+        }
+
+        return redirect()->route('admin.general-settings.edit');
+    }
+}

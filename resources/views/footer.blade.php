@@ -2,84 +2,7 @@
     <div class="container">
         <div class="footer-row-1">
             <div class="footer-menu-container" data-menu-type="list">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="footer-menu">
-                            <div class="footer-menu-content">
-                                <h5><font color="#ffffff"> KURUMSAL </font></h5>
-                                <ul>
-                                    <li><a href="{{config("app.base_site_url")}}/sayfa/hakkimizda">Hakkımızda</a></li>
-                                    <li><a href="{{config("app.base_site_url")}}/sayfa/site-kullanim-kilavuzu">Site
-                                            Kullanım Kılavuzu</a></li>
-                                    <li><a href="{{config("app.base_site_url")}}/iletisim">İletişim</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="footer-menu">
-                            <div class="footer-menu-content">
-                                <h5><font color="#ffffff"> DESTEK </font></h5>
-                                <ul>
-                                    <li><a href="{{config("app.base_site_url")}}/sayfa/sik-sorulan-kullanici-sorulari">Sık
-                                            Sorulan Kullanıcı
-                                            Soruları</a></li>
-                                    <li><a href="{{config("app.base_site_url")}}/sayfa/sik-sorulan-satici-sorulari">Sık
-                                            Sorulan Satıcı Soruları</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{config("app.base_site_url")}}/sayfa/sik-sorulan-muzayede-katilim-sorulari">Sık
-                                            Sorulan Müzayede
-                                            Katılım Soruları</a></li>
-                                    <li><a href="{{config("app.base_site_url")}}/Muzayede-Basvuru-Formu,DFO-2.html">Müzayede
-                                            Başvuru Formu</a></li>
-                                    <li><a href="{{config("app.base_site_url")}}/Hizmet-Destek-Talep-Formu,DFO-3.html">Hizmet&amp;
-                                            Destek Talep
-                                            Formu</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="footer-menu">
-                            <div class="footer-menu-content">
-                                <h5><font color="#ffffff"> GİZLİLİK VE KULLANIM </font></h5>
-                                <ul>
-                                    <li><a href="{{config("app.base_site_url")}}/sayfa/gizlilik-ve-guvenlik">Gizlilik
-                                            Politikası ve KVKK Aydınlatma
-                                            Metni</a></li>
-                                    <li><a href="{{config("app.base_site_url")}}/sayfa/cerez-politikasi">Çerez
-                                            Politikası</a></li>
-                                    <li><a href="{{config("app.base_site_url")}}/sayfa/muzayede-kurallari">Müzayede
-                                            Kuralları</a></li>
-                                    <li><a href="{{config("app.base_site_url")}}/sayfa/iade-ve-cayma-kosullari">İade ve
-                                            Cayma Koşulları</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="footer-menu">
-                            <div class="footer-menu-content">
-                                <h5><a href="{{config("app.base_site_url")}}https://www.sergikur.com"
-                                       target="_blank"><font color="#ffffff"> SERGİKUR
-                                            HİZMETLERİ </font></a></h5><a
-                                    href="{{config("app.base_site_url")}}https://www.sergikur.com"
-                                    target="_blank">
-                                </a>
-                                <ul><a href="{{config("app.base_site_url")}}https://www.sergikur.com" target="_blank">
-                                    </a>
-                                    <li><a href="{{config("app.base_site_url")}}https://www.sergikur.com"
-                                           target="_blank"></a><a>Taşıma</a></li>
-                                    <li><a>Depolama</a></li>
-                                    <li><a>Kurulum</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {!! $generalSettings['footer'] ?? null !!}
             </div>
 
         </div>
@@ -155,7 +78,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </footer>

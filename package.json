@@ -26,6 +26,7 @@
         "filepond-plugin-file-validate-type": "^1.2.8",
         "filepond-plugin-image-preview": "^4.6.11",
         "font-awesome": "^4.7.0",
+        "highlight.js": "^11.7.0",
         "inputmask": "^5.0.7",
         "jquery": "^3.6.3",
         "lazyload": "^2.0.0-rc.2",

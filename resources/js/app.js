@@ -5,6 +5,8 @@ import './quill'
 import './filepond'
 import jQuery from 'jquery';
 import Swal, {Toast} from './sweeralert'
+import hljs from 'highlight.js';
+import 'highlight.js/styles/github.css';
 
 window.$ = window.jQuery = jQuery;
 
@@ -98,4 +100,13 @@ $('#bids-search').keyup(function () {
     axios.get('/account/my-bids?' + params.toString()).then(r => {
         $('.my-bids').html(r.data.html)
     })
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((el) => {
+        hljs.highlightElement(el);
+        $('.general-setting-input').on('change', function () {
+            console.log($(this).val())
+        })
+    });
 });

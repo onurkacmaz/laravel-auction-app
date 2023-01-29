@@ -28,6 +28,9 @@
                     <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs(['admin.users.index', 'admin.users.new', 'admin.users.edit'])">
                         <b>{{ __('messages.users') }}</b>
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.general-settings.edit')" :active="request()->routeIs(['admin.general-settings.edit'])">
+                        <b>{{ __('messages.general-settings') }}</b>
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -113,6 +116,9 @@
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs(['admin.users.index', 'admin.users.new', 'admin.users.edit'])">
                     {{ __('messages.users') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.general-settings.edit')" :active="request()->routeIs(['admin.general-settings.edit'])">
+                    {{ __('messages.general-settings') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->

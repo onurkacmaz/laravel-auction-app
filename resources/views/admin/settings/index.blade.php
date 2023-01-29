@@ -12,34 +12,36 @@
                 <a href="{{ route('admin.settings.new') }}" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded">Oluştur</a>
             </div>
             <div class="overflow-hidden p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <table class="w-full">
-                    <thead>
-                    <tr>
-                        <th class="text-sm text-left p-4 bg-indigo-50">Değer Aralığı</th>
-                        <th class="text-sm text-left p-4 bg-indigo-50">Minimum Teklif Değeri</th>
-                        <th class="text-sm text-left p-4 bg-indigo-50">Düzenle</th>
-                        <th class="text-sm text-left p-4 bg-indigo-50">Sil</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($settings as $setting)
-                        <tr class="border-b">
-                            <td class="text-sm text-left font-bold p-4">{{Str::currency($setting->start_price)}} - {{Str::currency($setting->end_price)}}</td>
-                            <td class="text-sm text-left font-bold p-4">{{Str::currency($setting->min_bid_amount)}}</td>
-                            <td class="text-left font-bold p-4">
-                                <a href="{{ route('admin.settings.edit', ['id' => $setting->id]) }}">
-                                    <i class="fa fa-edit text-green-600"></i>
-                                </a>
-                            </td>
-                            <td class="text-left font-bold p-4">
-                                <a href="{{ route('admin.settings.destroy', ['id' => $setting->id]) }}">
-                                    <i class="fa fa-times text-red-600"></i>
-                                </a>
-                            </td>
+                <x-table>
+                    <table class="w-full">
+                        <thead>
+                        <tr>
+                            <th class="text-sm text-left p-4 bg-indigo-50">Değer Aralığı</th>
+                            <th class="text-sm text-left p-4 bg-indigo-50">Minimum Teklif Değeri</th>
+                            <th class="text-sm text-left p-4 bg-indigo-50">Düzenle</th>
+                            <th class="text-sm text-left p-4 bg-indigo-50">Sil</th>
                         </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        @foreach($settings as $setting)
+                            <tr class="border-b">
+                                <td class="text-sm text-left font-bold p-4">{{Str::currency($setting->start_price)}} - {{Str::currency($setting->end_price)}}</td>
+                                <td class="text-sm text-left font-bold p-4">{{Str::currency($setting->min_bid_amount)}}</td>
+                                <td class="text-left font-bold p-4">
+                                    <a href="{{ route('admin.settings.edit', ['id' => $setting->id]) }}">
+                                        <i class="fa fa-edit text-green-600"></i>
+                                    </a>
+                                </td>
+                                <td class="text-left font-bold p-4">
+                                    <a href="{{ route('admin.settings.destroy', ['id' => $setting->id]) }}">
+                                        <i class="fa fa-times text-red-600"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </x-table>
             </div>
             <div class="text-center">
                 {{ $settings->links() }}
