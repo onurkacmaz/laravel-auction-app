@@ -34,10 +34,14 @@
                                     @if(Carbon::now()->greaterThan(Carbon::parse($auction->end_date)))
                                         <span class="text-red-600">Müzayede Bitti</span>
                                     @else
-                                        <span class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 border border-gray-500">
+                                        @if(Carbon::parse($auction->start_date)->isFuture())
+                                            <span class="text-yellow-600 font-semibold">Müzayede <b class="text-black">{{Carbon::now()->diffAsCarbonInterval($auction->start_date)}}</b> sonra başlayacak</span>
+                                        @else
+                                            <span class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 border border-gray-500">
   <svg aria-hidden="true" class="hidden lg:block w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
   {{Carbon::now()->diffAsCarbonInterval($auction->end_date)}}
 </span>
+                                        @endif
                                     @endif
                                 </td>
                                 <td class="text-left text-center font-bold p-4">

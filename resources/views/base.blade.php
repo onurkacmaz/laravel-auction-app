@@ -28,8 +28,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
-    <link rel="stylesheet" href="https://s1.digitalfikirler.com/sergikur/assets/datatables/jquery.dataTables.min.css" />
-    <script type="text/javascript" src="https://s1.digitalfikirler.com/sergikur/assets/datatables/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://s1.digitalfikirler.com/sergikur/assets/css/style.css" />
     <script type="text/javascript" src="https://s1.digitalfikirler.com/sergikur/assets/js/script.js"></script>
 </head>

@@ -94,7 +94,7 @@ class ArtWorkService
             return Cache::get(sprintf("similar_artworks_%s", $artWork->id));
         }
 
-        $artWorks = ArtWork::query()->whereDoesntHave('userArtWork')->inRandomOrder()->limit(5)->get();
+        $artWorks = ArtWork::query()->where('auction_id', $artWork->auction_id)->whereDoesntHave('userArtWork')->inRandomOrder()->limit(5)->get();
         Cache::put(sprintf("similar_artworks_%s", $artWork->id), $artWorks);
 
         return $artWorks;

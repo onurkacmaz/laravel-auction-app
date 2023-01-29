@@ -35,7 +35,7 @@ class ArtWork extends Model
 
     public function auction(): BelongsTo
     {
-        return $this->belongsTo(Auction::class);
+        return $this->belongsTo(Auction::class)->withTrashed();
     }
 
     public function artist(): BelongsTo

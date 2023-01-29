@@ -4,8 +4,8 @@
     <link rel='canonical' href="{{route('auctions.artworks.show', ['id' => $artWork->id])}}"/>
     <meta name='robots' content='index, follow' />
     <meta property='og:url' content='{{route('auctions.artworks.show', ['id' => $artWork->id])}}' />
-    <meta itemprop='image' content='{{$artWork->images->first()->path}}' />
-    <meta property='og:image' content='{{$artWork->images->first()->path}}' />
+    <meta itemprop='image' content='{{$artWork->images->first()?->path}}' />
+    <meta property='og:image' content='{{$artWork->images->first()?->path}}' />
     <meta property='og:type' content='product' />
 @endsection
 @section('title', $artWork->title)
