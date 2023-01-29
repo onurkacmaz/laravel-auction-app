@@ -25,3 +25,7 @@
     min-width:2em;
     font-weight:bold;
 }
+
+svg {
+    display: unset;
+}
