@@ -32,7 +32,7 @@
                                 <td class="text-sm text-left font-bold p-4">{{$auction->end_date}}</td>
                                 <td class="text-sm text-left font-bold p-4">
                                     @if(Carbon::now()->greaterThan(Carbon::parse($auction->end_date)))
-                                        <span class="text-red-600">Müzayede Bitti</span>
+                                        <span class="text-red-600">Müzayede Sona Erdi</span>
                                     @else
                                         @if(Carbon::parse($auction->start_date)->isFuture())
                                             <span class="text-yellow-600 font-semibold">Müzayede <b class="text-black">{{Carbon::now()->diffAsCarbonInterval($auction->start_date)}}</b> sonra başlayacak</span>

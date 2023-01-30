@@ -19,7 +19,7 @@
                                             <small>({{Carbon::parse($auction->end_date)->format("Y-m-d H:i:s")}})</small>
                                         </div>
                                     </div>
-                                    <img class="object-contain h-96 rounded-lg" src="{{$auction->image}}" alt="">
+                                    <img class="object-contain h-96 w-96 rounded-lg" src="{{$auction->image}}" alt="">
                                 </div>
                                 <div class="p-4 font-bold bg-gray-100 border-top text-xl text-center">
                                     {{$auction->name}}
