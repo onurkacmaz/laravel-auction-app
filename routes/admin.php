@@ -53,6 +53,8 @@ Route::name('admin.')->prefix('admin')->group(function () {
         Route::get('/edit/{id}', [UserController::class, 'form'])->name('edit');
         Route::post('/save/{id}', [UserController::class, 'save'])->name('save');
         Route::get('/delete/{id}', [UserController::class, 'destroy'])->name('destroy');
+        Route::get('/ban/{id}', [UserController::class, 'ban'])->name('ban');
+        Route::get('/unban/{id}', [UserController::class, 'unban'])->name('unban');
     });
     Route::name('general-settings.')->prefix('general-settings')->group(function () {
         Route::get('/', [GeneralSettingController::class, 'form'])->name('edit');

@@ -88,7 +88,7 @@
                                                                         <div class="flex justify-center mb-4">
                                                                             <input id="bid_amount" type="number"
                                                                                    name="bid_amount"
-                                                                                   placeholder="Örn. {{ Str::currency($artWork->minimum_bid + $artWork->limit_value) }}"
+                                                                                   placeholder="Min. {{ Str::currency($artWork->minimum_bid) }}"
                                                                                    min="{{ $artWork->minimum_bid }}"
                                                                                    class="bid_amount border-0 flex-[0.6] text-dark font-bold rounded-tl-lg rounded-bl-lg rounded-br-none p-3">
                                                                             <button

@@ -50,4 +50,16 @@ class UserController extends Controller
         $this->userService->deleteUser($id);
         return redirect()->route('admin.users.index');
     }
+
+    public function ban($id): RedirectResponse
+    {
+        $this->userService->banUser($id);
+        return redirect()->route('admin.users.index');
+    }
+
+    public function unban($id): RedirectResponse
+    {
+        $this->userService->unbanUser($id);
+        return redirect()->route('admin.users.index');
+    }
 }

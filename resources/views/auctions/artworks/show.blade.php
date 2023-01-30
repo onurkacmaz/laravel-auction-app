@@ -162,19 +162,19 @@
                                 <div class="product-short-details">
                                     {{ $artWork->artist->name }}
                                 </div>
-                                <div class="product-price">
-                                    <div class="product-price-new a{{$artWork->id}}">
-                                        {{ Str::currency($artWork->end_price) }}
-                                    </div>
-                                </div>
                                 @if(is_null($artWork->userArtWork) && !Carbon::parse($artWork->auction->end_date)->isPast())
+                                    <div class="product-price">
+                                        <div class="product-price-new a{{$artWork->id}}">
+                                            {{ Str::currency($artWork->end_price) }}
+                                        </div>
+                                    </div>
                                     <div class="product-cart-buttons">
                                         <div class="product-buttons-wrapper">
                                             <div class="product-buttons-row">
                                                 <div class="form-modal flex flex-row">
                                                     <input type="number" min="{{ $artWork->minimum_bid }}"
                                                            class="p-4 text-2xl rounded-tl-lg rounded-bl-lg border-r-0 w-full"
-                                                           placeholder="Örn. {{ Str::currency($artWork->minimum_bid + $artWork->limit_value) }}">
+                                                           placeholder="Min. {{ Str::currency($artWork->minimum_bid) }}">
                                                     <a href="#" data-id="{{$artWork->id}}"
                                                        class="bidding !w-1/2 p-4 bg-[#333] text-center rounded-lg !rounded-tl-none !rounded-bl-none ">
                                                     <span class="text-white font-bold text-2xl">
@@ -185,31 +185,15 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="my-10 bids" id="bids">
+                                        @include('components.bids', ['bids' => $artWork->bids()->simplePaginate(BidLog::PAGINATION_LIMIT), 'hideName' => true])
+                                    </div>
+                                @else
+                                    <div class="product-price">
+                                        <span class="font-semibold text-xl">Toplam Pey Sayısı:</span>
+                                        <span class="font-bold text-2xl">{{ $artWork->bids->count() }}</span>
+                                    </div>
                                 @endif
-                                <div class="my-10 bids" id="bids">
-                                    @include('components.bids', ['bids' => $artWork->bids()->simplePaginate(BidLog::PAGINATION_LIMIT), 'hideName' => true])
-                                </div>
-                                <div class="product-button-box">
-                                    <a href="#">
-                                        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
-                                            <path
-                                                d="M34.0423 24.5205L34.0851 24.5885L34.1607 24.5613C34.6129 24.3991 35.0995 24.3102 35.6069 24.3102C37.975 24.3102 39.9015 26.2369 39.9015 28.605C39.9015 30.9731 37.9747 32.9 35.6066 32.9C33.2385 32.9 31.3116 30.9731 31.3116 28.605C31.3116 27.5406 31.7018 26.5661 32.3456 25.8148L32.3935 25.7588L32.3543 25.6965L30.2 22.273L30.1521 22.1968L30.0714 22.2364C29.1543 22.6861 28.1243 22.9395 27.0358 22.9395C25.5307 22.9395 24.1374 22.455 23.0004 21.6357L22.9312 21.5858L22.871 21.6463L18.6424 25.9016L18.59 25.9543L18.6254 26.0197C18.9185 26.5611 19.0851 27.1804 19.0851 27.8382C19.0851 29.9518 17.3654 31.6715 15.2519 31.6715C13.1383 31.6715 11.4186 29.9518 11.4186 27.8382C11.4186 27.1723 11.5895 26.5459 11.8893 25.9998L11.9246 25.9356L11.8741 25.8827L9.19491 23.0721L9.14618 23.021L9.08171 23.0498C8.46429 23.3259 7.78141 23.4807 7.06259 23.4807C4.32518 23.4807 2.09805 21.2534 2.09805 18.516C2.09805 15.7786 4.3253 13.5513 7.06271 13.5513C9.80013 13.5513 12.0274 15.7786 12.0274 18.516C12.0274 19.7317 11.5874 20.8461 10.8591 21.7103L10.8013 21.7789L10.8632 21.8438L13.3336 24.4354L13.3861 24.4904L13.4531 24.4546C13.9899 24.1679 14.6021 24.0049 15.252 24.0049C15.9103 24.0049 16.53 24.1717 17.0718 24.4652L17.1376 24.5008L17.1903 24.4478L21.4172 20.1943L21.4771 20.1341L21.4273 20.0652C20.6036 18.9264 20.1163 17.5294 20.1163 16.0198C20.1163 12.2043 23.2205 9.1 27.036 9.1C30.8515 9.1 33.9558 12.2043 33.9558 16.0198C33.9558 17.947 33.1632 19.6918 31.8872 20.948L31.8299 21.0045L31.8727 21.0725L34.0423 24.5205ZM27.0359 11.1549C24.3532 11.1549 22.171 13.3371 22.171 16.0198C22.171 18.7023 24.3532 20.8846 27.0359 20.8846C29.7185 20.8846 31.9008 18.7024 31.9008 16.0198C31.9008 13.3371 29.7185 11.1549 27.0359 11.1549ZM13.4735 27.8382C13.4735 28.8188 14.2711 29.6166 15.2519 29.6166C16.2326 29.6166 17.0302 28.8188 17.0302 27.8382C17.0302 26.8576 16.2325 26.0599 15.2519 26.0599C14.2713 26.0599 13.4735 26.8576 13.4735 27.8382ZM7.06259 15.6062C5.45814 15.6062 4.15291 16.9114 4.15291 18.516C4.15291 20.1206 5.45801 21.4258 7.06259 21.4258C8.66715 21.4258 9.97239 20.1206 9.97239 18.516C9.97239 16.9114 8.66703 15.6062 7.06259 15.6062ZM33.3667 28.605C33.3667 29.8403 34.3716 30.8451 35.6069 30.8451C36.842 30.8451 37.8468 29.8403 37.8468 28.605C37.8468 27.3697 36.8421 26.3649 35.6069 26.3649C34.3716 26.3649 33.3667 27.3697 33.3667 28.605Z"
-                                                fill="#252525" stroke="white" stroke-width="0.2"/>
-                                        </svg>
-                                        <div>
-                                            <div class="title">SERGİKUR GÜVENCESİ İLE AL / SAT</div>
-                                            <div class="text">Nodio euismod lacinia at quis risus. Massa id
-                                                neque.Vestibulum<br/>morbi
-                                                blandit cursus. Sed turpis tincidunt id.
-                                            </div>
-                                            <div class="other-text">
-                                                <div>KDV: TRY 2,500</div>
-                                                <div>Komisyon: TRY 2,500</div>
-                                                <div>Toplam Fiyat: <b>TRY 5,000</b></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
                                 <div class="product-banners">
                                     <div class="product-banners-title">
                                         <div><img

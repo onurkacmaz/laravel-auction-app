@@ -45,4 +45,22 @@ class UserService
     {
         return Role::query()->get();
     }
+
+    public function banUser(int $id): User|Model
+    {
+        $user = $this->getUserById($id);
+        $user->banned = true;
+        $user->save();
+
+        return $user;
+    }
+
+    public function unBanUser(int $id): User|Model
+    {
+        $user = $this->getUserById($id);
+        $user->banned = false;
+        $user->save();
+
+        return $user;
+    }
 }

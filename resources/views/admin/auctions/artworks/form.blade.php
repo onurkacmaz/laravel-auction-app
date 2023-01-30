@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="mt-4">
-                        <input type="file" class="filepond" name="images[]" multiple accept="image/*"
+                        <input type="file" class="filepond" data-max-files="4" name="images[]" multiple accept="image/*"
                                @if($artWork->images->count() > 0) data-file-metadata-images="{{json_encode($artWork->images->map(function ($v) {
     return ['source' => $v->path];
 }))}}" @endif>
