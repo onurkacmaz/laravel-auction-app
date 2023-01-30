@@ -1,4 +1,4 @@
-@php use Carbon\Carbon; @endphp
+@php use Carbon\Carbon;use Illuminate\Contracts\Auth\MustVerifyEmail; @endphp
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
@@ -26,15 +26,6 @@
         </div>
 
         <div>
-            <x-input-label for="tc_identification_number" :value="__('messages.tc_identification_number')"/>
-            <x-text-input disabled="{{!empty($user->tc_identification_number)}}" id="tc_identification_number"
-                          name="tc_identification_number" type="text" class="mt-1 block w-full disabled:opacity-50"
-                          :value="old('tc_identification_number', $user->tc_identification_number)" autofocus
-                          autocomplete="name"/>
-            <x-input-error class="mt-2" :messages="$errors->get('tc_identification_number')"/>
-        </div>
-
-        <div>
             <x-input-label for="birth_date" :value="__('messages.birth_date')"/>
             <x-text-input id="birth_date" class="block mt-1 w-full" type="date"
                           name="birth_date"
@@ -48,7 +39,7 @@
                           :value="old('email', $user->email)" required autocomplete="email"/>
             <x-input-error class="mt-2" :messages="$errors->get('email')"/>
 
-            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
+            @if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
                     <p class="text-sm mt-2 text-gray-800">
                         {{ __('messages.your_email_address_is_unverified') }}

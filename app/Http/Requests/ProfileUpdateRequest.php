@@ -20,14 +20,7 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => ['string', 'max:255'],
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
-            'birth_date' => ['required', 'date', 'before:today'],
-            'tc_identification_number' => [
-                'nullable',
-                'integer',
-                'digits:11',
-                Rule::unique(User::class)->ignore($this->user()->id),
-                new TcIdentifyRule($this->all())
-            ],
+            'birth_date' => ['required', 'date', 'before:today']
         ];
     }
 
@@ -36,7 +29,6 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => 'Ad Soyad',
             'email' => 'E-posta',
-            'tc_identification_number' => 'TC Kimlik Numarası',
             'birth_date' => 'Doğum Tarihi'
         ];
     }
