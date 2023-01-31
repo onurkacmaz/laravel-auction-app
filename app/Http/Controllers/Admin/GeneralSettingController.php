@@ -24,9 +24,15 @@ class GeneralSettingController extends Controller
         $settings = GeneralSetting::query()->whereIn('key', array_keys($request->all()))->get();
 
         foreach ($settings as $setting) {
-            if ($setting->key === "footer") {
-                $request->request->set($setting->key, preg_replace('/<a href="\/(.+)">/', '<a href="https://sergikurartcenter.com/$1">', $request->input($setting->key)));
+            switch ($setting->key) {
+                case "footer":
+                    $request->request->set($setting->key, preg_replace('/<a href="\/(.+)">/', '<a href="https://sergikurartcenter.com/$1">', $request->input($setting->key)));
+                    break;
+                case "menu_banner":
+                    $request->request->set('menu_banner', sprintf("data:image/png;base64, %s", json_decode($request->get('menu_banner'), true)['data']));
+                    break;
             }
+
             $setting->value = $request->input($setting->key);
             $setting->save();
         }

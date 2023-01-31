@@ -33,9 +33,9 @@
                                                         <div class="row">
                                                             <div class="navigation-banner col-xl-3">
                                                                 <div class="banner"><a
-                                                                        href="https://www.sergikurartcenter.com/urun/bayram-gumus-2010"
+                                                                        href="{{ $generalSettings['menu_banner_link'] ?? null }}"
                                                                         data-banner-alt=""><img
-                                                                            src="//st3.myideasoft.com/idea/lc/38/myassets/banner_pictures/banner_1.png?revision=1674561382"
+                                                                            src="{{ $generalSettings['menu_banner'] ?? null }}"
                                                                             alt=""></a></div>
                                                             </div>
                                                             <div class="col-xl-9">

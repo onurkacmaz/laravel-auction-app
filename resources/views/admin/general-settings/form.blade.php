@@ -22,6 +22,11 @@
                                                             onkeyup="$('.' + '{{$setting->key}}').val(this.innerText);"
                                                             class="h-96 text-xs border rounded-lg">{{$setting->value}}</code></pre>
                                     <input type="hidden" name="{{$setting->key}}" class="{{$setting->key}}" value="{{$setting->value}}">
+                                @elseif($setting->key === "menu_banner")
+                                    <input type="file" name="{{$setting->key}}" id="{{$setting->key}}"
+                                           value="{{$setting->value}}"
+                                           data-file-metadata-images="{{json_encode([$setting->value])}}"
+                                           class="filepond" data-max-files="1">
                                 @else
                                     <input type="text" name="{{$setting->key}}" id="{{$setting->key}}"
                                            value="{{$setting->value}}"
