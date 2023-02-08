@@ -9,7 +9,7 @@
     <div class="py-12">
         @if($userArtWorks->count() > 0)
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
                     @foreach($userArtWorks as $userArtWork)
                         <a href="{{ route('profile.artworks.show', ['id' => $userArtWork->artwork->id]) }}"
                            class="p-4 flex flex-col bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl">
