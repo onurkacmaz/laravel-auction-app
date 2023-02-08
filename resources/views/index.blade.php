@@ -213,7 +213,7 @@
                                                             </div>
                                                             <div class="showcase-content lg:hidden md:hidden">
                                                                 <div class="showcase-brand">
-                                                                    <a href="">{{ $artWork->title }}</a>
+                                                                    <a href="{{ route('auctions.artworks.show', ['id' => $artWork->id]) }}">{{ $artWork->title }}</a>
                                                                 </div>
                                                                 <div class="showcase-price">
                                                                     <div class="showcase-price-new">
