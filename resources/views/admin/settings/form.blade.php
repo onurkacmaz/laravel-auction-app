@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div>
-                            <label for="end_price" class="block text-sm font-medium text-gray-700">Başlangıç
+                            <label for="end_price" class="block text-sm font-medium text-gray-700">Bitiş
                                 Fiyatı</label>
                             <div class="relative mt-1 rounded-md shadow-sm">
                                 <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
