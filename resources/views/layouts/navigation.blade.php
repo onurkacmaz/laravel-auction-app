@@ -20,7 +20,7 @@
                                 :active="request()->routeIs('profile.artworks.index', 'profile.artworks.show')">
                         {{ __('messages.my_artworks') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('profile.my_bids.index')"
+                    <x-nav-link :href="route('profile.my-bids.index')"
                                 :active="request()->routeIs('profile.my-bids.index')">
                         {{ __('messages.my_bids') }}
                     </x-nav-link>
