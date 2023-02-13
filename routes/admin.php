@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ArtistController;
 use App\Http\Controllers\Admin\ArtWorkController;
 use App\Http\Controllers\Admin\ArtWorkGroupController;
+use App\Http\Controllers\Admin\AuctionApplicationController;
 use App\Http\Controllers\Admin\AuctionController;
 use App\Http\Controllers\Admin\GeneralSettingController;
 use App\Http\Controllers\Admin\UserController;
@@ -59,5 +60,10 @@ Route::name('admin.')->prefix('admin')->group(function () {
     Route::name('general-settings.')->prefix('general-settings')->group(function () {
         Route::get('/', [GeneralSettingController::class, 'form'])->name('edit');
         Route::post('/save', [GeneralSettingController::class, 'save'])->name('save');
+    });
+    Route::name('auction-applications.')->prefix('auction-applications')->group(function () {
+        Route::get('/', [AuctionApplicationController::class, 'index'])->name('index');
+        Route::get('/view/{id}', [AuctionApplicationController::class, 'view'])->name('view');
+        Route::get('/delete/{id}', [AuctionApplicationController::class, 'destroy'])->name('destroy');
     });
 });

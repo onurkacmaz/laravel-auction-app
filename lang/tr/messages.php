@@ -59,4 +59,5 @@ return [
     'artwork-groups' => 'Anasayfa Eser Grupları',
     'my_bids' => 'Tekliflerim',
     'general-settings' => 'Genel Ayarlar',
+    'auction_applications' => 'Müzayede Başvuruları',
 ];

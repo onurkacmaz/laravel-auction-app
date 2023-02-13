@@ -20,6 +20,7 @@
                             <th class="text-sm text-left p-4 bg-indigo-50">Başlangıç Tarihi</th>
                             <th class="text-sm text-left p-4 bg-indigo-50">Bitiş Tarihi</th>
                             <th class="text-sm text-left p-4 bg-indigo-50">Bitişe Kalan Süre</th>
+                            <th class="text-sm text-left p-4 bg-indigo-50">Durum</th>
                             <th class="text-sm text-left p-4 bg-indigo-50">Düzenle</th>
                             <th class="text-sm text-left p-4 bg-indigo-50">Sil</th>
                         </tr>
@@ -45,12 +46,19 @@
                                     @endif
                                 </td>
                                 <td class="text-left text-center font-bold p-4">
+                                    @if($auction->status)
+                                        <span class="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300 font-bold">Aktif</span>
+                                    @else
+                                        <span class="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300 font-bold">Pasif</span>
+                                    @endif
+                                </td>
+                                <td class="text-left text-center font-bold p-4">
                                     <a href="{{ route('admin.auctions.edit', ['id' => $auction->id]) }}">
                                         <i class="fa fa-edit text-green-600"></i>
                                     </a>
                                 </td>
                                 <td class="text-left text-center font-bold p-4">
-                                    <a class="delete-auction" href="{{ route('admin.auctions.destroy', ['id' => $auction->id]) }}">
+                                    <a class="delete-record" href="{{ route('admin.auctions.destroy', ['id' => $auction->id]) }}">
                                         <i class="fa fa-times text-red-600"></i>
                                     </a>
                                 </td>

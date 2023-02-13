@@ -43,7 +43,7 @@ class AuctionService
 
     public function getActiveAuction(): Auction|Model|null
     {
-        return Auction::query()->where('start_date', '<=', Carbon::now())->where('end_date', '>=', Carbon::now())->first();
+        return Auction::query()->where('start_date', '<=', Carbon::now())->where('end_date', '>=', Carbon::now())->where('status', true)->first();
     }
 
     public function isLastXMinutes(int $minutes, $date): bool {

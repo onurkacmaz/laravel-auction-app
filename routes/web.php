@@ -37,3 +37,5 @@ Route::get('authorize', [IdeaSoftService::class, 'authorize'])->name('ideasoft.a
 Route::get('themes', [IdeaSoftService::class, 'getThemeSettings'])->name('ideasoft.themes');
 
 Route::get('archive', [AuctionController::class, 'archive'])->name('archive');
+
+Route::post('send-application', [HomeController::class, 'sendApplication'])->name('send-application');
