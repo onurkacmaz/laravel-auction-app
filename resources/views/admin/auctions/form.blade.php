@@ -51,6 +51,12 @@
                         <input type="file" class="filepond" name="image" accept="image/*"
                                @if($auction->image) data-file-metadata-images="{{json_encode([["source" => $auction->image]])}}" @endif>
                     </div>
+                    <div class="mt-4">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Görsel Linki</label>
+                        <input type="text" id="image_link" name="image_link"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                               value="{{$auction->image_link}}" placeholder="Görsel Linki">
+                    </div>
                     <div class="pt-4 text-right">
                         <button type="submit"
                                 class="bg-indigo-600 text-white font-bold py-2 px-4 rounded text-sm w-full sm:w-auto px-5 py-2.5 text-center">

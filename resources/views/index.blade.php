@@ -19,11 +19,11 @@
                         <div id="entry-slider">
                             <div>
                                 <div class="entry-slider entry-slider-1">
-                                    <a href="#">
+                                    <a target="_blank" href="{{ $auction->image_link }}">
                                         <div class="entry-slider-img">
                                             <img
                                                 src="{{ $auction->image }}"
-                                                alt=""/>
+                                                alt="{{ $auction->name }}"/>
                                         </div>
                                         <div class="entry-slider-container">
                                             <div class="entry-slider-content">

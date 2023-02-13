@@ -5,13 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name', 'Laravel') }}</title>
-
-
+        <link rel='icon' href='{{Vite::asset('resources/image/favicon.ico')}}' type='image/x-icon'>
+        <link rel='shortcut icon' href='{{Vite::asset('resources/image/favicon.ico')}}' type='image/x-icon'>
         <meta name="robots" content="noindex, follow" />
         <meta name="robots" content="none" />
         <meta name="googlebot" content="noindex">
         <meta name="googlebot-news" content="nosnippet">
-        
+
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
         @vite(['resources/js/app.js', 'resources/css/app.css', 'resources/js/auction.js', 'resources/js/artwork.js'])
     </head>

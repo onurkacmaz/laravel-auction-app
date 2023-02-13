@@ -15,7 +15,7 @@
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Sanatçı Adı</label>
                         <input type="text" id="name" name="name"
                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                               value="{{$artist->name}}" placeholder="Müzayede Adı" required>
+                               value="{{$artist->name}}" placeholder="Sanatçı Adı" required>
                     </div>
                     <div class="mb-6">
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900">E-Mail</label>
