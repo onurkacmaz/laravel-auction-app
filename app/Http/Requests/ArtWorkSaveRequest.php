@@ -30,6 +30,7 @@ class ArtWorkSaveRequest extends FormRequest
             'estimated_market_price' => 'required|numeric|gt:0',
             'artist_id' => 'required|exists:artists,id|integer',
             'status' => 'required|in:1,0',
+            'images.*' => 'sometimes|base64dimensions:min_width=1200,min_height=1200, max_width=1200,max_height=1200'
         ];
     }
 
