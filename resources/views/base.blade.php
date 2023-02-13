@@ -24,7 +24,7 @@
     <script type="text/javascript">var visitor = {}, mainCurrency = 'TL', menuItems = [], route = {group: 'default', name: 'entry'};</script>
     @vite(['resources/js/app.js', 'resources/css/app.css', 'resources/js/notification.js'])
     <link rel='stylesheet' type='text/css' href='//st1.myideasoft.com/7.2.4.8/storefront/assets/css/global.css?revision=7.2.4.8-10' />
-    <link rel='stylesheet' type='text/css' href='//st2.myideasoft.com/idea/lc/38/themes/selftpl_63a0c6bbd7a25/assets/css/theme.css?revision=7.2.4.8-10-1675847083' />
+    <link rel='stylesheet' type='text/css' href='//st2.myideasoft.com/idea/lc/38/themes/selftpl_63a0c6bbd7a25/assets/css/theme.css?revision=7.2.4.8-10-1676301284' />
     <script type='text/javascript' src='//st2.myideasoft.com/7.2.4.8/storefront/assets/javascript/vendor/jquery-3.2.1.min.js?revision=7.2.4.8-10'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
