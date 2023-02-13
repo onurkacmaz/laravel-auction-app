@@ -31,6 +31,9 @@
                     <x-nav-link :href="route('admin.general-settings.edit')" :active="request()->routeIs(['admin.general-settings.edit'])">
                         <b>{{ __('messages.general-settings') }}</b>
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.auction-applications.index')" :active="request()->routeIs(['admin.auction-applications.index', 'admin.auction-applications.view'])">
+                        <b>{{ __('messages.auction_applications') }}</b>
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -119,6 +122,9 @@
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.general-settings.edit')" :active="request()->routeIs(['admin.general-settings.edit'])">
                     {{ __('messages.general-settings') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.auction-applications.index')" :active="request()->routeIs(['admin.auction-applications.index', 'admin.auction-applications.view'])">
+                    {{ __('messages.auction_applications') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
