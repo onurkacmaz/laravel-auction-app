@@ -25,14 +25,14 @@
                     <x-nav-link :href="route('admin.artwork-groups.index')" :active="request()->routeIs(['admin.artwork-groups.index', 'admin.artwork-groups.new', 'admin.artwork-groups.edit'])">
                         <b>{{ __('messages.artwork-groups') }}</b>
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.auction-applications.index')" :active="request()->routeIs(['admin.auction-applications.index', 'admin.auction-applications.view'])">
+                        <b>{{ __('messages.auction_applications') }}</b>
+                    </x-nav-link>
                     <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs(['admin.users.index', 'admin.users.new', 'admin.users.edit'])">
                         <b>{{ __('messages.users') }}</b>
                     </x-nav-link>
                     <x-nav-link :href="route('admin.general-settings.edit')" :active="request()->routeIs(['admin.general-settings.edit'])">
                         <b>{{ __('messages.general-settings') }}</b>
-                    </x-nav-link>
-                    <x-nav-link :href="route('admin.auction-applications.index')" :active="request()->routeIs(['admin.auction-applications.index', 'admin.auction-applications.view'])">
-                        <b>{{ __('messages.auction_applications') }}</b>
                     </x-nav-link>
                 </div>
             </div>
@@ -117,14 +117,14 @@
                 <x-responsive-nav-link :href="route('admin.settings.index')" :active="request()->routeIs(['admin.settings.index', 'admin.settings.new', 'admin.settings.edit'])">
                     {{ __('messages.limit_settings') }}
                 </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.auction-applications.index')" :active="request()->routeIs(['admin.auction-applications.index', 'admin.auction-applications.view'])">
+                    {{ __('messages.auction_applications') }}
+                </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs(['admin.users.index', 'admin.users.new', 'admin.users.edit'])">
                     {{ __('messages.users') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.general-settings.edit')" :active="request()->routeIs(['admin.general-settings.edit'])">
                     {{ __('messages.general-settings') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('admin.auction-applications.index')" :active="request()->routeIs(['admin.auction-applications.index', 'admin.auction-applications.view'])">
-                    {{ __('messages.auction_applications') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
