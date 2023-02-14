@@ -17,7 +17,7 @@
                                 <label for="{{$setting->key}}" class="text-base font-bold text-gray-700">
                                     {{$setting->name}}
                                 </label>
-                                @if($setting->key === "footer")
+                                @if($setting->key === "footer" || $setting->key === "auction_application_description")
                                     <pre class="mt-4"><code contenteditable="true"
                                                             onkeyup="$('.' + '{{$setting->key}}').val(this.innerText);"
                                                             class="h-96 text-xs border rounded-lg">{{$setting->value}}</code></pre>
@@ -27,6 +27,11 @@
                                            value="{{$setting->value}}"
                                            data-file-metadata-images="{{json_encode([$setting->value])}}"
                                            class="filepond" data-max-files="1">
+                                @elseif($setting->key === "homepage_slider")
+                                    <input type="file" name="{{$setting->key}}[]" id="{{$setting->key}}"
+                                           value="{{$setting->value}}"
+                                           data-file-metadata-images="{{$setting->value}}"
+                                           class="filepond" multiple>
                                 @else
                                     <input type="text" name="{{$setting->key}}" id="{{$setting->key}}"
                                            value="{{$setting->value}}"

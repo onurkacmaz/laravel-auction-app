@@ -2,7 +2,7 @@
     @csrf
     <div class="mt-20">
         <h3 class="text-center">Müzayede Başvuru Formu</h3>
-        <p class="mt-5 text-center text-gray-400">{{ $generalSettings['auction_application_description'] ?? null }}</p>
+        <p class="mt-5 text-center text-gray-400">{!! $generalSettings['auction_application_description'] ?? null !!}</p>
         <div class="mt-20 mx-auto w-full lg:w-1/2 grid-cols-2 grid gap-4">
             <div class="mt-4 flex flex-col text-center">
                 <label for="applicant_name" class="font-bold">Başvuru Sahibi Adı ve Soyadı</label>

@@ -231,6 +231,7 @@
                     @endforeach
                 @else
                     @include('components.errors')
+                    @include('components.slider')
                     @include('components.auction-application-form')
                 @endif
             </section>

@@ -10,21 +10,22 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 FilePond.setOptions(tr_TR)
 FilePond.registerPlugin(FilePondPluginImagePreview, FilePondPluginFileValidateType, FilePondPluginFileEncode, FilePondPluginFileMetadata)
 
-const elems = document.querySelector('.filepond')
+const elems = document.querySelectorAll('.filepond')
 if (elems) {
-    let images = document.querySelector('.filepond').getAttribute('data-file-metadata-images')
+    elems.forEach(elem => {
+        let images = elem.getAttribute('data-file-metadata-images')
 
-    const filepond = FilePond.create(document.querySelector('.filepond'), {
-        acceptedFileTypes: ['image/*'],
-        allowFileEncode: true,
-        allowFileMetadata: true
-    })
-
-    if (images) {
-        images = JSON.parse(images)
-        filepond.setOptions({
-            files: images
+        const filepond = FilePond.create(elem, {
+            acceptedFileTypes: ['image/*'],
+            allowFileEncode: true,
+            allowFileMetadata: true
         })
-    }
 
+        if (images) {
+            images = JSON.parse(images)
+            filepond.setOptions({
+                files: images
+            })
+        }
+    })
 }

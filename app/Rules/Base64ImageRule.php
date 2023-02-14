@@ -29,14 +29,14 @@ class Base64ImageRule implements Rule
     public function passes($attribute, $value): bool
     {
         if (is_null($value)) {
-            return false;
+            return true;
         }
 
         $data = json_decode($value, true);
         $base64 = $data['data'];
         $image = Image::make($base64);
 
-        if ($image->getWidth() !== 1200 || $image->getHeight() !== 1200) {
+        if ($image->getWidth() > 1200 || $image->getHeight() > 1200) {
             return false;
         }
 
@@ -50,6 +50,6 @@ class Base64ImageRule implements Rule
      */
     public function message(): string
     {
-        return 'Görsel boyutları 1200x1200 olmalıdır.';
+        return 'Görsel boyutları max 1200x1200 olabilir.';
     }
 }
