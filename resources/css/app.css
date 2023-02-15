@@ -29,7 +29,3 @@
 svg {
     display: unset;
 }
-.footer-row-2 [class*=col-] {
-    @apply justify-center;
-    @apply flex;
-}
