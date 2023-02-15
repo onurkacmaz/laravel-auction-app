@@ -19,7 +19,7 @@
                         <div id="entry-slider">
                             <div>
                                 <div class="entry-slider entry-slider-1">
-                                    <a target="_blank" href="{{ $auction->image_link }}">
+                                    <a href="{{ $auction->image_link }}">
                                         <div class="entry-slider-img">
                                             <img
                                                 src="{{ $auction->image }}"
@@ -27,9 +27,9 @@
                                         </div>
                                         <div class="entry-slider-container">
                                             <div class="entry-slider-content">
-                                                <div class="entry-slider-title">
+                                                <!--<div class="entry-slider-title">
                                                     {{ $auction->name }}
-                                                </div>
+                                                </div>-->
                                                 <div class="entry-slider-sub-title">
                                                     {!! $auction->description !!}
                                                 </div>
