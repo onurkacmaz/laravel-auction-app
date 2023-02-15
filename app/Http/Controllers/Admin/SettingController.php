@@ -49,7 +49,7 @@ class SettingController extends Controller
 
         return redirect()->route('admin.settings.edit', [
             'id' => $setting->id
-        ]);
+        ])->with('success', 'Kayıt başarıyla kaydedildi.');
     }
 
     public function destroy(int $id): RedirectResponse {

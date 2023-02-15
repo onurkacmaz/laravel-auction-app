@@ -52,6 +52,6 @@ class GeneralSettingController extends Controller
 
         Cache::put('generalSettings', GeneralSetting::all()->pluck('value', 'key')->toArray());
 
-        return redirect()->route('admin.general-settings.edit');
+        return redirect()->route('admin.general-settings.edit')->with('success', 'Ayarlar başarıyla güncellendi.');
     }
 }

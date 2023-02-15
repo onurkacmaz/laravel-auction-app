@@ -51,7 +51,7 @@ class ArtWorkGroupController extends Controller
 
         return redirect()->route('admin.artwork-groups.edit', [
             'id' => $group->id
-        ]);
+        ])->with('success', 'Kayıt başarıyla kaydedildi.');
     }
 
     public function destroy(int $id): RedirectResponse {

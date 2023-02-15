@@ -42,24 +42,24 @@ class UserController extends Controller
     public function save(UserSaveRequest $request, int|null $id = null): RedirectResponse
     {
         $user = $this->userService->updateOrCreate($request, $id);
-        return redirect()->route('admin.users.edit', ['id' => $user->id]);
+        return redirect()->route('admin.users.edit', ['id' => $user->id])->with('success', 'Kullanıcı başarıyla kaydedildi.');
     }
 
     public function destroy($id): RedirectResponse
     {
         $this->userService->deleteUser($id);
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('success', 'Kullanıcı başarıyla silindi.');
     }
 
     public function ban($id): RedirectResponse
     {
         $this->userService->banUser($id);
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('success', 'Kullanıcı yasaklandı.');
     }
 
     public function unban($id): RedirectResponse
     {
         $this->userService->unbanUser($id);
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('success', 'Kullanıcı yasağı kaldırıldı.');
     }
 }

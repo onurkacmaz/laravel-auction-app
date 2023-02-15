@@ -45,7 +45,7 @@ class ArtistController
 
         return redirect()->route('admin.artists.edit', [
             'id' => $artist->id
-        ]);
+        ])->with('success', 'Kayıt başarıyla kaydedildi.');
     }
 
     public function destory(int $id): RedirectResponse
