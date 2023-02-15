@@ -39,7 +39,7 @@ class MinimumBidRule implements Rule
      */
     public function passes($attribute, $value): bool
     {
-        if ($attribute === "bid_amount" && $value > $this->min_bid_amount) {
+        if ($attribute === "bid_amount" && $value >= $this->min_bid_amount) {
             return true;
         }
 
@@ -53,6 +53,6 @@ class MinimumBidRule implements Rule
      */
     public function message(): string
     {
-        return sprintf(":attribute %s değerinden büyük olmalıdır.", Str::currency($this->min_bid_amount));
+        return sprintf(":attribute %s değerinden büyük veya eşit olmalıdır.", Str::currency($this->min_bid_amount));
     }
 }
