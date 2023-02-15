@@ -19,6 +19,7 @@
                         <div id="entry-slider">
                             <div>
                                 <div class="entry-slider entry-slider-1">
+                                    @if(is_null($auction->image_link))
                                     <a href="{{ $auction->image_link }}">
                                         <div class="entry-slider-img">
                                             <img
@@ -36,6 +37,23 @@
                                             </div>
                                         </div>
                                     </a>
+                                    @else
+                                        <div class="entry-slider-img">
+                                            <img
+                                                src="{{ $auction->image }}"
+                                                alt="{{ $auction->name }}"/>
+                                        </div>
+                                        <div class="entry-slider-container">
+                                            <div class="entry-slider-content">
+                                                <!--<div class="entry-slider-title">
+                                                    {{ $auction->name }}
+                                                </div>-->
+                                                <div class="entry-slider-sub-title">
+                                                    {!! $auction->description !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
