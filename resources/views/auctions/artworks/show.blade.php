@@ -173,7 +173,7 @@
                                             <div class="product-buttons-row">
                                                 <div class="form-modal flex flex-row">
                                                     <input type="number" min="{{ $artWork->minimum_bid }}"
-                                                           class="p-4 text-2xl rounded-tl-lg rounded-bl-lg border-r-0 w-full"
+                                                           class="bid_amount_{{$artWork->id}} p-4 text-2xl rounded-tl-lg rounded-bl-lg border-r-0 w-full"
                                                            placeholder="Min. {{ Str::currency($artWork->minimum_bid) }}">
                                                     <a href="#" data-id="{{$artWork->id}}"
                                                        class="bidding !w-1/2 p-4 bg-[#333] text-center rounded-lg !rounded-tl-none !rounded-bl-none ">
@@ -344,7 +344,8 @@
 @section('js')
     <script>
         const id = "{{$artWork->id}}"
-        const isEnded = @if(Carbon::parse($artWork->auction->end_date)->isPast()) true @else false @endif
+        const isEnded = @if(Carbon::parse($artWork->auction->end_date)->isPast()) true
+        @else false @endif
     </script>
     <script type="text/javascript"
             src="//st1.myideasoft.com/idea/lc/38/themes/selftpl_63a0c6bbd7a25/assets/javascript/product.js?revision=7.2.4.7-10-1674143460"></script>

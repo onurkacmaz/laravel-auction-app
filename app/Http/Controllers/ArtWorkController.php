@@ -83,6 +83,8 @@ class ArtWorkController extends Controller
         return response()->json(['success' => true, 'data' => [
             'message' => 'Teklif verildi.',
             'end_price' => Str::currency($artWork->end_price),
+            'min_bid_amount' => Str::currency($artWork->minimum_bid),
+            'min_bid_amount_without_currency' => $artWork->minimum_bid,
             'bid_count' => $artWork->bids()->count()
         ]]);
     }

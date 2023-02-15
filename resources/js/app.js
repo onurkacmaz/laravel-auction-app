@@ -85,6 +85,7 @@ $('.bidding').on('click', function (e) {
         })
         $('.a' + id).text(r.data.data.end_price)
         $('.bid' + id).text(r.data.data.bid_count)
+        $('.bid_amount_' + id).val("").attr('placeholder', r.data.data.min_bid_amount).attr('min', r.data.data.min_bid_amount_without_currency)
     }).catch(e => {
         Toast.fire({
             icon: 'error',

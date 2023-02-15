@@ -66,21 +66,21 @@
                                                                 </a>
                                                             </div>
                                                         </div>
-                                                        <div
-                                                            class="hidden md:block lg:block absolute top-0 left-0 right-0 !bg-transparent bottom-0 showcase-content !w-full !p-0">
-                                                            <div class="showcase-content !bottom-auto">
-                                                                <div>
-                                                                    <a class="showcase-title"
-                                                                       href="{{ route('auctions.artworks.show', ['id' => $artWork->id]) }}"
-                                                                       title="{{ $artWork->title }}">{{ $artWork->title }}</a>
-                                                                </div>
-                                                                <div class="showcase-price mt-4">
-                                                                    <div
-                                                                        class="showcase-price-new current-bid a{{$artWork->id}}">
-                                                                        {{Str::currency($artWork->end_price)}}
-                                                                    </div>
+                                                        <div class="hidden md:block lg:block showcase-content top-0 !bottom-auto">
+                                                            <div>
+                                                                <a class="showcase-title"
+                                                                   href="{{ route('auctions.artworks.show', ['id' => $artWork->id]) }}"
+                                                                   title="{{ $artWork->title }}">{{ $artWork->title }}</a>
+                                                            </div>
+                                                            <div class="showcase-price mt-4">
+                                                                <div
+                                                                    class="showcase-price-new current-bid a{{$artWork->id}}">
+                                                                    {{Str::currency($artWork->end_price)}}
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                        <div
+                                                            class="hidden md:block lg:block absolute h-fit left-0 right-0 !bg-transparent bottom-0 showcase-content !w-full !p-0">
                                                             <div
                                                                 class="p-4 text-white bottom-0 absolute right-0 left-0 !bg-[#333]/70 text-center">
                                                                 @if(!Carbon::parse($auction->end_date)->isPast())
@@ -89,7 +89,7 @@
                                                                                name="bid_amount"
                                                                                placeholder="Min. {{ Str::currency($artWork->minimum_bid) }}"
                                                                                min="{{ $artWork->minimum_bid }}"
-                                                                               class="bid_amount border-0 flex-[0.6] text-dark font-bold rounded-tl-lg rounded-bl-lg rounded-br-none p-3">
+                                                                               class="bid_amount_{{$artWork->id}} border-0 flex-[0.6] text-dark font-bold rounded-tl-lg rounded-bl-lg rounded-br-none p-3">
                                                                         <button
                                                                             data-id="{{ $artWork->id }}"
                                                                             class="bidding bg-gray-900 text-white flex-[0.1] font-bold p-3 align-baseline rounded-tr-lg rounded-br-lg w-20">
