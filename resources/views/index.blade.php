@@ -19,7 +19,7 @@
                         <div id="entry-slider">
                             <div>
                                 <div class="entry-slider entry-slider-1">
-                                    @if(is_null($auction->image_link))
+                                    @if(!is_null($auction->image_link))
                                     <a href="{{ $auction->image_link }}">
                                         <div class="entry-slider-img">
                                             <img
