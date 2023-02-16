@@ -3,8 +3,7 @@ import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
     build: {
-        chunkSizeWarningLimit: 2600,
-        minify: true,
+        chunkSizeWarningLimit: 2600
     },
     plugins: [
         laravel({
