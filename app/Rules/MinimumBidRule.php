@@ -26,7 +26,7 @@ class MinimumBidRule implements Rule
     public function __construct(int $id)
     {
         $this->artWork = (new ArtWorkService())->getArtWorkById($id);
-        $this->limitSetting = (new SettingService())->getSettings()->getCollection()->where('start_price', '<', $this->artWork->end_price)->where('end_price', '>', $this->artWork->end_price)->first();
+        $this->limitSetting = (new SettingService())->getSettings()->getCollection()->where('start_price', '<=', $this->artWork->end_price)->where('end_price', '>=', $this->artWork->end_price)->first();
         $this->min_bid_amount = $this->artWork->end_price + $this->limitSetting?->min_bid_amount ?? 0;
     }
 
