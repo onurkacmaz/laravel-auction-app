@@ -26,11 +26,11 @@ class HomeController extends Controller
 
         if (!is_null($auction)) {
 
-            if (Cache::has('homepageGroups')) {
-                $groups = Cache::get('homepageGroups');
+            if (Cache::has(sprintf("homepageGroups-%s", $auction->id))) {
+                $groups = Cache::get(sprintf("homepageGroups-%s", $auction->id));
             }else {
                 $groups = $this->artWorkService->getArtWorksGrouped($auction);
-                Cache::set('homepageGroups', $groups);
+                Cache::set(sprintf("homepageGroups-%s", $auction->id), $groups);
             }
         }
 
