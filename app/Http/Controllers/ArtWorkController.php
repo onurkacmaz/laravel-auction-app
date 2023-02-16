@@ -11,6 +11,7 @@ use App\Jobs\FinishArtWork;
 use App\Models\BidLog;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -79,6 +80,8 @@ class ArtWorkController extends Controller
         Queue::later(now()->addMinutes(3), new FinishArtWork($bid));
 
         $this->artWorkService->sendNewBidMail($bid);
+
+        Cache::delete('groups');
 
         return response()->json(['success' => true, 'data' => [
             'message' => 'Teklif verildi.',

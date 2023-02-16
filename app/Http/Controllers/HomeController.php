@@ -7,6 +7,7 @@ use App\Http\Services\AuctionService;
 use App\Models\AuctionApplication;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -24,7 +25,13 @@ class HomeController extends Controller
         $auction = $this->auctionService->getActiveAuction();
 
         if (!is_null($auction)) {
-            $groups = $this->artWorkService->getArtWorksGrouped($auction);
+
+            if (Cache::has('groups')) {
+                $groups = Cache::get('groups');
+            }else {
+                $groups = $this->artWorkService->getArtWorksGrouped($auction);
+                Cache::set('groups', $groups);
+            }
         }
 
         return view('index', [
