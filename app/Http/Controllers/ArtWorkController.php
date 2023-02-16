@@ -81,7 +81,7 @@ class ArtWorkController extends Controller
 
         $this->artWorkService->sendNewBidMail($bid);
 
-        Cache::delete('groups');
+        Cache::delete('homepageGroups');
 
         return response()->json(['success' => true, 'data' => [
             'message' => 'Teklif verildi.',
