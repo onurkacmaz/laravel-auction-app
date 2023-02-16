@@ -63,7 +63,7 @@
                                             <h1>{{ $artWork->auction->name }}</h1>
                                         </div>
                                         <div class="product-market-price mt-4">
-                                            {{ Str::currency($artWork->estimated_market_price) }}
+                                            <b>Tahmini Piyasa Değeri:</b> {{ Str::currency($artWork->estimated_market_price) }}
                                         </div>
                                     </div>
                                     <div id="product-user-buttons">
@@ -322,10 +322,7 @@
                                                 <a href="{{ route('auctions.artworks.show', ['id' => $similarArtWork->id]) }}"
                                                    title="{{ $similarArtWork->title }}">{{ $similarArtWork->title }}</a>
                                             </div>
-                                            <div class="showcase-market-price">
-                                                {{ Str::currency($similarArtWork->estimated_market_price) }}
-                                            </div>
-                                            <div class="showcase-price">
+                                            <div class="showcase-price mt-4">
                                                 <div class="showcase-price-new">
                                                     {{ Str::currency($similarArtWork->end_price) }}
                                                 </div>

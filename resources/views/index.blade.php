@@ -88,7 +88,7 @@
                                                             <div>
                                                                 <a class="showcase-title"
                                                                    href="{{ route('auctions.artworks.show', ['id' => $artWork->id]) }}"
-                                                                   title="{{ $artWork->title }}">{{ $artWork->title }}</a>
+                                                                   title="{{ $artWork->title }}">{{ $artWork->title }}, {{$artWork->artist->name}}</a>
                                                             </div>
                                                             <div class="showcase-price mt-4">
                                                                 <div
@@ -230,7 +230,7 @@
                                                         </div>
                                                         <div class="showcase-content lg:hidden md:hidden">
                                                             <div class="showcase-brand">
-                                                                <a href="{{ route('auctions.artworks.show', ['id' => $artWork->id]) }}">{{ $artWork->title }}</a>
+                                                                <a href="{{ route('auctions.artworks.show', ['id' => $artWork->id]) }}">{{ $artWork->title }}, {{ $artWork->artist->name }}</a>
                                                             </div>
                                                             <div class="showcase-price">
                                                                 <div class="showcase-price-new">
