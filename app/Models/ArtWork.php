@@ -76,7 +76,7 @@ class ArtWork extends Model
     public function minimumBid(): Attribute {
         return Attribute::make(
             get: function () {
-                $limitSetting = (new SettingService())->getSettings()->getCollection()->where('start_price', '<', $this->end_price)->where('end_price', '>', $this->end_price)->first();
+                $limitSetting = (new SettingService())->getSettings()->getCollection()->where('start_price', '<=', $this->end_price)->where('end_price', '>=', $this->end_price)->first();
                 return $this->end_price + $limitSetting?->min_bid_amount ?? 0;
             }
         );
@@ -85,7 +85,7 @@ class ArtWork extends Model
     public function limitValue(): Attribute {
         return Attribute::make(
             get: function () {
-                $limitSetting = (new SettingService())->getSettings()->getCollection()->where('start_price', '<', $this->end_price)->where('end_price', '>', $this->end_price)->first();
+                $limitSetting = (new SettingService())->getSettings()->getCollection()->where('start_price', '<=', $this->end_price)->where('end_price', '>=', $this->end_price)->first();
                 return $limitSetting?->min_bid_amount ?? 0;
             }
         );
