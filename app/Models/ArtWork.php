@@ -92,6 +92,6 @@ class ArtWork extends Model
     }
 
     public function scopeGrouped($query, ArtWorkGroup|Model $group): Builder {
-        return $query->whereDoesntHave('userArtWork')->where('end_price', '>', $group->begin)->where('end_price', '<', $group->end)->groupBy( 'end_price', 'id');
+        return $query->whereDoesntHave('userArtWork')->where('end_price', '>=', $group->begin)->where('end_price', '<=', $group->end)->groupBy( 'end_price', 'id');
     }
 }
