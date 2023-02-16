@@ -24,7 +24,7 @@
                                         @foreach($artWork->images as $key => $image)
                                             <a href="{{ $image->path }}" data-pswp-width="800" data-pswp-height="600"
                                                class="{{!$loop->first ? 'hidden' : null}} p-{{$key}}">
-                                                <img id="primary-image" src="{{ $image->path }}"
+                                                <img id="primary-image" class="lazyload" data-src="{{$image->path}}" src="https://via.placeholder.com/500x500/ffffff/969696.png?text=Yükleniyor..."
                                                      alt="{{ $artWork->title }}"/>
                                             </a>
                                         @endforeach
@@ -34,7 +34,7 @@
                                     @foreach($artWork->images as $key => $image)
                                         <a href="{{$key}}"
                                            class="opacity-70 hover:opacity-100 transition-all ease-in-out delay-15">
-                                            <img src="{{$image->path}}" alt="{{ $artWork->title }}">
+                                            <img class="lazyload" data-src="{{$image->path}}" src="https://via.placeholder.com/500x500/ffffff/969696.png?text=Yükleniyor..." alt="{{ $artWork->title }}">
                                         </a>
                                     @endforeach
                                 </div>

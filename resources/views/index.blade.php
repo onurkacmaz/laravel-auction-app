@@ -23,7 +23,9 @@
                                     <a href="{{ $auction->image_link }}">
                                         <div class="entry-slider-img">
                                             <img
-                                                src="{{ $auction->image }}"
+                                                class="lazyload"
+                                                src="https://via.placeholder.com/500x500/ffffff/969696.png?text=Yükleniyor..."
+                                                data-src="{{ $auction->image }}"
                                                 alt="{{ $auction->name }}"/>
                                         </div>
                                         <div class="entry-slider-container">
@@ -40,7 +42,9 @@
                                     @else
                                         <div class="entry-slider-img">
                                             <img
-                                                src="{{ $auction->image }}"
+                                                class="lazyload"
+                                                src="https://via.placeholder.com/500x500/ffffff/969696.png?text=Yükleniyor..."
+                                                data-src="{{ $auction->image }}"
                                                 alt="{{ $auction->name }}"/>
                                         </div>
                                         <div class="entry-slider-container">
@@ -79,7 +83,7 @@
                                                                 <a href="{{ route('auctions.artworks.show', ['id' => $artWork->id]) }}"
                                                                    title="Yapı">
                                                                     <img class="lazyload object-cover object-center"
-                                                                         src="{{ $artWork->images()->first()->path }}"
+                                                                         src="https://via.placeholder.com/500x500/ffffff/969696.png?text=Yükleniyor..."
                                                                          data-src="{{ $artWork->images()->first()->path }}">
                                                                 </a>
                                                             </div>
