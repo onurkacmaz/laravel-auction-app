@@ -312,7 +312,8 @@
                                             <div class="showcase-image">
                                                 <a href="{{ route('auctions.artworks.show', ['id' => $similarArtWork->id]) }}"
                                                    title="{{ $similarArtWork->title }}">
-                                                    <img src="{{ $similarArtWork->images->first()->path ?? null }}"
+                                                    <img class="lazyload" data-src="{{ $similarArtWork->images->first()->path ?? null }}"
+                                                         src="https://via.placeholder.com/500x500/ffffff/969696.png?text=Yükleniyor..."
                                                          alt="{{ $similarArtWork->title }}">
                                                 </a>
                                             </div>
