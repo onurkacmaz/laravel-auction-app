@@ -26,14 +26,6 @@
     <link rel='stylesheet' type='text/css' href='//st1.myideasoft.com/7.2.4.8/storefront/assets/css/global.css?revision=7.2.4.8-10' />
     <link rel='stylesheet' type='text/css' href='//st2.myideasoft.com/idea/lc/38/themes/selftpl_63a0c6bbd7a25/assets/css/theme.css?revision=7.2.4.8-10-1676452814' />
     <script type='text/javascript' src='//st2.myideasoft.com/7.2.4.8/storefront/assets/javascript/vendor/jquery-3.2.1.min.js?revision=7.2.4.8-10'></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.16/sweetalert2.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.16/sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" />
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
     <link rel="stylesheet" href="https://s1.digitalfikirler.com/sergikur/assets/css/style.css" />
     <script type="text/javascript" src="https://s1.digitalfikirler.com/sergikur/assets/js/script.js"></script>
 </head>
