@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="col-lg-6 mb-5 mb-lg-0">
                                         <div class="title-area">SANATÇI HAKKINDA</div>
-                                        <div class="text-area">{!! $artWork->artist->bio !!}</div>
+                                        <div class="text-area">{!! $artWork->artist?->bio !!}</div>
                                     </div>
                                 </div>
                             </div>
@@ -160,7 +160,7 @@
                                     </div>
                                 </div>
                                 <div class="product-short-details">
-                                    {{ $artWork->artist->name }}
+                                    {{ $artWork->artist?->name }}
                                 </div>
                                 @if(is_null($artWork->userArtWork) && !Carbon::parse($artWork->auction->end_date)->isPast())
                                     <div class="product-price">
