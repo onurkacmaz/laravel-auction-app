@@ -80,7 +80,7 @@ class ArtWorkService
         foreach ($images as $image) {
             $path = sprintf("/artworks/%s/%s", $artwork->id, uniqid() . '.png');
             Storage::disk('public')->put($path, base64_decode(json_decode($image, true)['data']));
-            $sanitizedImages[] = $path;
+            $sanitizedImages[] = "/storage/" . $path;
         }
 
         $willBeDelete = ArtWorkImage::query()->whereNotIn('path', $sanitizedImages)->where('art_work_id', $artwork->id)->get();

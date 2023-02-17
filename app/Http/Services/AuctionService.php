@@ -36,7 +36,7 @@ class AuctionService
             Storage::delete($auction->image);
             $imagePath = sprintf("/auctions/%s/%s", $id, uniqid() . '.png');
             Storage::disk('public')->put($imagePath, base64_decode($image['data']));
-            $image = $imagePath;
+            $image = "/storage" . $imagePath;
         }
 
         $request->request->set('updated_at', Carbon::now());
