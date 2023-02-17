@@ -34,8 +34,8 @@ class AuctionService
 
         if (!is_null($image)) {
             Storage::delete("/public" . $auction->image);
-            $imagePath = sprintf("/auctions/%s/%s", $id, uniqid() . '.png');
-            Storage::put("/public" .$imagePath, base64_decode($image['data']));
+            $imagePath = sprintf("/public/auctions/%s/%s", $id, uniqid() . '.png');
+            Storage::put($imagePath, base64_decode($image['data']));
             $image = $imagePath;
         }
 
