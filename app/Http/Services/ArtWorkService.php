@@ -78,7 +78,7 @@ class ArtWorkService
 
         $sanitizedImages = [];
         foreach ($images as $image) {
-            $path = sprintf("/public/artworks/%s/%s", $artwork->id, uniqid() . '.png');
+            $path = sprintf("/artworks/%s/%s", $artwork->id, uniqid() . '.png');
             Storage::put($path, base64_decode(json_decode($image, true)['data']));
             $sanitizedImages[] = $path;
         }
