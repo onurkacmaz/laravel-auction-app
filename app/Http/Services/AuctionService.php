@@ -33,10 +33,8 @@ class AuctionService
         $image = json_decode($request->get('image'), true);
 
         if (!is_null($image)) {
-            if (Storage::has($auction->image)) {
-                Storage::delete($auction->image);
-            }
-            $imagePath = sprintf("/storage/auctions/%s/%s", $id, uniqid() . '.png');
+            Storage::delete($auction->image);
+            $imagePath = sprintf("/auctions/%s/%s", $id, uniqid() . '.png');
             Storage::put($imagePath, base64_decode($image['data']));
             $image = $imagePath;
         }
