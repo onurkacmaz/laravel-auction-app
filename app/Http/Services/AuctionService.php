@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AuctionService
 {
@@ -25,12 +26,17 @@ class AuctionService
         return Auction::query()->where('id', $id)->first();
     }
 
-    public function updateOrCreate(Request $request, int $id = null): Auction|Model{
+    public function updateOrCreate(Request $request, int $id = null): Auction|Model
+    {
+        $auction = $this->getAuction($id);
 
         $image = json_decode($request->get('image'), true);
 
         if (!is_null($image)) {
-            $image = sprintf("data:image/png;base64, %s", $image["data"]);
+            Storage::delete("/public" . $auction->image);
+            $imagePath = sprintf("/auctions/%s/%s", $id, uniqid() . '.png');
+            Storage::put("/public" .$imagePath, base64_decode($image['data']));
+            $image = $imagePath;
         }
 
         $request->request->set('updated_at', Carbon::now());
@@ -38,7 +44,7 @@ class AuctionService
         $request->request->set('end_date', Carbon::parse($request->get('end_date')));
         $request->request->set('image', $image);
 
-        return Auction::query()->updateOrCreate(['id' => $id], $request->all());
+        return $auction->query()->updateOrCreate(['id' => $id], $request->all());
     }
 
     public function getActiveAuction(): Auction|Model|null

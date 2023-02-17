@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Queue;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class ArtWorkService
 {
@@ -76,10 +78,16 @@ class ArtWorkService
 
         $sanitizedImages = [];
         foreach ($images as $image) {
-            $sanitizedImages[] = sprintf("data:image/png;base64, %s", json_decode($image, true)['data']);
+            $path = sprintf("/artworks/%s/%s", $artwork->id, uniqid() . '.png');
+            Storage::put("/public" .$path, base64_decode(json_decode($image, true)['data']));
+            $sanitizedImages[] = $path;
         }
 
-        ArtWorkImage::query()->whereNotIn('path', $sanitizedImages)->where('art_work_id', $artwork->id)->delete();
+        $willBeDelete = ArtWorkImage::query()->whereNotIn('path', $sanitizedImages)->where('art_work_id', $artwork->id)->get();
+        foreach ($willBeDelete as $image) {
+            Storage::delete("/public" . $image->path);
+            $image->delete();
+        }
 
         foreach ($sanitizedImages as $image) {
             ArtWorkImage::query()->updateOrCreate(['art_work_id' => $artwork->id, 'path' => $image]);
