@@ -22,7 +22,7 @@
                                 <div class="product-image">
                                     <div id="product-primary-image" class="pswp-gallery">
                                         @foreach($artWork->images as $key => $image)
-                                            <a href="{{ $image->path }}" data-pswp-width="800" data-pswp-height="600"
+                                            <a href="{{ $image->path }}"
                                                class="{{!$loop->first ? 'hidden' : null}} p-{{$key}}">
                                                 <img id="primary-image" class="lazyload" data-src="{{$image->path}}" src="https://via.placeholder.com/500x500/ffffff/969696.png?text=Yükleniyor..."
                                                      alt="{{ $artWork->title }}"/>

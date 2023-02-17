@@ -29,3 +29,7 @@
 svg {
     display: unset;
 }
+.pswp img {
+    max-width: none;
+    object-fit: contain;
+}
