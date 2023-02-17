@@ -16,10 +16,8 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
 
 class ArtWorkService
 {
@@ -98,14 +96,7 @@ class ArtWorkService
 
     public function getSimilarArtWorks(Model|ArtWork $artWork): Collection
     {
-        if (Cache::has(sprintf("similar_artworks_%s", $artWork->id))) {
-            return Cache::get(sprintf("similar_artworks_%s", $artWork->id));
-        }
-
-        $artWorks = ArtWork::query()->where('auction_id', $artWork->auction_id)->whereDoesntHave('userArtWork')->inRandomOrder()->limit(5)->get();
-        Cache::put(sprintf("similar_artworks_%s", $artWork->id), $artWorks);
-
-        return $artWorks;
+        return ArtWork::query()->where('auction_id', $artWork->auction_id)->whereDoesntHave('userArtWork')->inRandomOrder()->limit(5)->get();
     }
 
     public function search(string $keyword): LengthAwarePaginator
