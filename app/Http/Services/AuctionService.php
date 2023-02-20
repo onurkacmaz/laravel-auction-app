@@ -28,12 +28,19 @@ class AuctionService
 
     public function updateOrCreate(Request $request, int $id = null): Auction|Model
     {
-        $auction = $this->getAuction($id);
+        $auction = null;
+
+        if (!is_null($id)) {
+            $auction = $this->getAuction($id);
+        }
 
         $image = json_decode($request->get('image'), true);
 
         if (!is_null($image)) {
-            Storage::delete($auction->image);
+            if (!is_null($auction->image)) {
+                Storage::delete($auction?->image);
+            }
+
             $imagePath = sprintf("/auctions/%s/%s", $id, uniqid() . '.png');
             Storage::disk('public')->put($imagePath, base64_decode($image['data']));
             $image = "/storage" . $imagePath;
@@ -44,7 +51,7 @@ class AuctionService
         $request->request->set('end_date', Carbon::parse($request->get('end_date')));
         $request->request->set('image', $image);
 
-        return $auction->query()->updateOrCreate(['id' => $id], $request->all());
+        return Auction::query()->updateOrCreate(['id' => $id], $request->all());
     }
 
     public function getActiveAuction(): Auction|Model|null
