@@ -21,7 +21,7 @@
                     <div class="mb-6">
                         <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Açıklama</label>
                         <div class="quill-editor" data-input="description">{!! $auction->description !!}</div>
-                        <input type="hidden" name="description" id="description">
+                        <input type="hidden" name="description" id="description" value="{!! $auction->description !!}">
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                         <div>
