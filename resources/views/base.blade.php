@@ -27,7 +27,7 @@
     <link rel='stylesheet' type='text/css' href='{{asset('/css/theme.css')}}' />
     <script type='text/javascript' src='//st2.myideasoft.com/7.2.4.8/storefront/assets/javascript/vendor/jquery-3.2.1.min.js?revision=7.2.4.8-10'></script>
     <link rel="stylesheet" href="{{asset('/css/style.css')}}" />
-    <script type="text/javascript" src="{{asset('/js/script.css')}}"></script>
+    <script type="text/javascript" src="{{asset('/js/script.js')}}"></script>
 </head>
 <body class="current-page-@yield('bodyClass', 'default-entry')">
 @include('header')
