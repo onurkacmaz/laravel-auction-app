@@ -23,11 +23,11 @@
     <link rel='shortcut icon' href='{{Vite::asset('resources/image/favicon.ico')}}' type='image/x-icon'>
     <script type="text/javascript">var visitor = {}, mainCurrency = 'TL', menuItems = [], route = {group: 'default', name: 'entry'};</script>
     @vite(['resources/js/app.js', 'resources/css/app.css', 'resources/js/notification.js'])
-    <link rel='stylesheet' type='text/css' href='{{asset('/css/global.css')}}' />
-    <link rel='stylesheet' type='text/css' href='{{asset('/css/theme.css')}}' />
+    <link rel='stylesheet' type='text/css' href='//st1.myideasoft.com/7.2.4.8/storefront/assets/css/global.css?revision=7.2.4.8-10' />
+    <link rel='stylesheet' type='text/css' href='//st2.myideasoft.com/idea/lc/38/themes/selftpl_63a0c6bbd7a25/assets/css/theme.css?revision=7.2.4.8-10-1676980283' />
     <script type='text/javascript' src='//st2.myideasoft.com/7.2.4.8/storefront/assets/javascript/vendor/jquery-3.2.1.min.js?revision=7.2.4.8-10'></script>
-    <link rel="stylesheet" href="{{asset('/css/style.css')}}" />
-    <script type="text/javascript" src="{{asset('/js/script.js')}}"></script>
+    <link rel="stylesheet" href="https://s1.digitalfikirler.com/sergikur/assets/css/style.css" />
+    <script type="text/javascript" src="https://s1.digitalfikirler.com/sergikur/assets/js/script.js"></script>
 </head>
 <body class="current-page-@yield('bodyClass', 'default-entry')">
 @include('header')
