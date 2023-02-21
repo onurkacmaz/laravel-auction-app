@@ -1,0 +1,192 @@
+.swal2-popup {
+    font-size: 1.6rem;
+}
+
+.swal2-success {
+    color: #fff !important;
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+}
+
+.swal2-danger {
+    color: #fff !important;
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+}
+
+.swal2-secondary {
+    color: #fff !important;
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+}
+
+.bg-AE122B {
+    background: #AE122B !important;
+}
+
+.dropzone {
+    flex-wrap: wrap !important;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  opacity: 1;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.socket::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+.socket::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.socket::-webkit-scrollbar-thumb
+{
+	background-color: #999;
+    border-radius: 20px;
+}
+
+[data-wrapper="page-content"] input[type=radio]:checked+label:before,
+[data-wrapper="page-content"] input[type=checkbox]:checked+label:before,
+[data-wrapper="page-content"] input[type=radio]+label:before,
+[data-wrapper="page-content"] input[type=checkbox]+label:before {
+    display: none !important;
+}
+
+[data-wrapper="page-content"] input[type=radio]+label,
+[data-wrapper="page-content"] input[type=checkbox]+label {
+    padding-left: 0.5rem !important;
+}
+
+.radio-style-1 {
+    line-height: 2.25rem;
+}
+
+.cutomer-question-bubble {
+    width: 50%;
+    border-radius: 20px 20px 20px 0 !important;
+}
+
+.gallery-question-bubble {
+    width: 50%;
+    border-radius: 20px 20px 0 20px !important;
+}
+
+.select2-dropdown {
+    position: relative;
+    z-index: 999999999;
+}
+
+#form-modal-content {
+    /*position: fixed;
+    top: -4.3rem;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    padding: 0;
+    overflow: hidden;
+    height: 600px;*/
+}
+
+@media (max-width: 767px) {
+    #form-modal-content {
+        width: 90% !important;
+    }
+}
+
+.chat {
+    font-family: 'spartan';
+    font-size: 1.6rem;
+}
+
+.chat-header {
+    box-shadow: 0 1px 5px #0003, 0 6px 16px #0000000f;
+}
+
+.chat-body {
+    max-height: 200px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.chat .question-bubble {
+    width: 90%;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.chat .question-bubble.left {
+    border-radius: 20px 20px 20px 0 !important;
+}
+
+.chat .question-bubble.right {
+    border-radius: 20px 20px 0 20px !important;
+}
+
+/*.chat-footer {
+    width: 90%;
+    position: absolute;
+    bottom: 2rem;
+}*/
+
+.chat-footer .list-group {
+    min-height: 150px;
+}
+
+.datepicker-inline {
+    position: absolute;
+    background: #FFF;
+    border: solid 1px #EEE;
+    width: 100%;
+}
+
+#form-modal-content {
+    position: fixed;
+    max-width: 600px;
+    padding: 0;
+    bottom: 0;
+    right: 0;
+    background: #FFF;
+    z-index: 9999;
+    width: 390px;
+    border: solid 1px #EEE;
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 470px;
+}
+
+.chat .chat-header {
+    cursor: pointer;
+}

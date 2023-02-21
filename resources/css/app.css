@@ -33,3 +33,9 @@ svg {
     max-width: none;
     object-fit: contain;
 }
+@media only screen and (max-width: 600px) {
+    .footer-row-2 .row [class*=col-] {
+        @apply justify-center;
+        @apply flex;
+    }
+}
