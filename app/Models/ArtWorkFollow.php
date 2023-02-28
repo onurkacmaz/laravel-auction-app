@@ -17,6 +17,13 @@ class ArtWorkFollow extends Model
     private string $orderBy = "created_at";
     private string $orderDirection = "desc";
 
+    protected $with = ['artwork'];
+
+    public function artwork(): BelongsTo
+    {
+        return $this->belongsTo(ArtWork::class, 'art_work_id', 'id');
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

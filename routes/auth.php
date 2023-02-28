@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\FollowController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
@@ -23,6 +25,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
         });
         Route::name('my-bids.')->prefix('my-bids')->group(function () {
             Route::get('/', [AccountController::class, 'myBids'])->name('index');
+        });
+        Route::name('my-favorites.')->prefix('my-favorites')->group(function () {
+            Route::get('/', [FavoriteController::class, 'myFavorites'])->name('index');
+            Route::get('/delete/{id}', [FavoriteController::class, 'destroy'])->name('destroy');
+        });
+        Route::name('my-follows.')->prefix('my-follows')->group(function () {
+            Route::get('/', [FollowController::class, 'myFollows'])->name('index');
+            Route::get('/delete/{id}', [FollowController::class, 'destroy'])->name('destroy');
         });
     });
 });

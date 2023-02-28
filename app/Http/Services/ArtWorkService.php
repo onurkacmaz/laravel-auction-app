@@ -5,6 +5,8 @@ namespace App\Http\Services;
 use App\Http\Requests\ArtWorkSaveRequest;
 use App\Jobs\NewBid;
 use App\Models\ArtWork;
+use App\Models\ArtWorkFavorite;
+use App\Models\ArtWorkFollow;
 use App\Models\ArtWorkGroup;
 use App\Models\ArtWorkImage;
 use App\Models\Auction;
@@ -146,5 +148,29 @@ class ArtWorkService
         return BidLog::query()->whereHas('artWork', function ($query) use ($q) {
             return $query->where('title', 'like', '%' . $q . '%');
         })->where('user_id', $user->getAuthIdentifier())->with('artWork')->paginate(ArtWork::PAGINATION_LIMIT, ['*'], 'page', is_null($q) ? $page : 1);
+    }
+
+    public function getFavorites(Authenticatable $user, string|null $q = null, int $page = 1): LengthAwarePaginator
+    {
+        return ArtWorkFavorite::query()->whereHas('artwork', function ($query) use ($q) {
+            return $query->where('title', 'like', '%' . $q . '%');
+        })->where('user_id', $user->getAuthIdentifier())->paginate(ArtWork::PAGINATION_LIMIT, ['*'], 'page', is_null($q) ? $page : 1);
+    }
+
+    public function getFollows(Authenticatable $user, string|null $q = null, int $page = 1): LengthAwarePaginator
+    {
+        return ArtWorkFollow::query()->whereHas('artwork', function ($query) use ($q) {
+            return $query->where('title', 'like', '%' . $q . '%');
+        })->where('user_id', $user->getAuthIdentifier())->paginate(ArtWork::PAGINATION_LIMIT, ['*'], 'page', is_null($q) ? $page : 1);
+    }
+
+    public function deleteFavorite(int $id, int $userId): bool
+    {
+        return ArtWorkFavorite::query()->where('id', $id)->where('user_id', $userId)->delete();
+    }
+
+    public function deleteFollow(int $id, int $userId): bool
+    {
+        return ArtWorkFollow::query()->where('id', $id)->where('user_id', $userId)->delete();
     }
 }

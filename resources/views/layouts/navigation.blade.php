@@ -24,6 +24,14 @@
                                 :active="request()->routeIs('profile.my-bids.index')">
                         {{ __('messages.my_bids') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('profile.my-favorites.index')"
+                                :active="request()->routeIs('profile.my-favorites.index')">
+                        {{ __('messages.my_favorites') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('profile.my-follows.index')"
+                                :active="request()->routeIs('profile.my-follows.index')">
+                        {{ __('messages.my_follows') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                         {{ __('messages.profile') }}
                     </x-nav-link>
@@ -110,6 +118,14 @@
                 <x-responsive-nav-link :href="route('profile.my-bids.index')"
                                        :active="request()->routeIs('profile.my-bids.index')">
                     {{ __('messages.my_bids') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('profile.my-favorites.index')"
+                            :active="request()->routeIs('profile.my-favorites.index')">
+                    {{ __('messages.my_favorites') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('profile.my-follows.index')"
+                            :active="request()->routeIs('profile.my-follows.index')">
+                    {{ __('messages.my_follows') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                     {{ __('messages.profile') }}

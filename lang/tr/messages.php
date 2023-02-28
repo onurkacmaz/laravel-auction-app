@@ -60,4 +60,6 @@ return [
     'my_bids' => 'Tekliflerim',
     'general-settings' => 'Genel Ayarlar',
     'auction_applications' => 'Müzayede Başvuruları',
+    'my_favorites' => 'Favorilerim',
+    'my_follows' => 'Takip Ettiklerim',
 ];
