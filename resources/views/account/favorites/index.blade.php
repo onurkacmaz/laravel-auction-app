@@ -17,7 +17,7 @@
                                     <i class="fa fa-times text-white"></i>
                                 </a>
                             </div>
-                            <a href="{{ route('profile.artworks.show', ['id' => $favorite->artwork->id]) }}"
+                            <a href="{{route('auctions.artworks.show', ['id' => $favorite->artwork->id]) }}"
                                class="p-4 flex flex-col bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl">
                                 <img class="rounded bg-gray-100 object-contain h-52 lg:h-full w-full lg:w-52 w-full md:w-48"
                                      src="{{ $favorite->artwork->images()?->first()?->path }}" alt="">

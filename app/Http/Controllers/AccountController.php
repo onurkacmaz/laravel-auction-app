@@ -94,6 +94,11 @@ class AccountController extends Controller
 
     public function artwork(int $id): View {
         $userArtWork = $this->artWorkService->getByUser($id, Auth::user());
+
+        if (!$userArtWork) {
+            abort(404);
+        }
+
         return view('account.artworks.show', ['userArtWork' => $userArtWork]);
     }
 }
