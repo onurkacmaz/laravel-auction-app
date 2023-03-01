@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            @if(!is_null($auction) && Carbon::parse($auction->end_date)->isPast())
+            @if(!is_null($auction) && !$auction->status && Carbon::parse($auction->end_date)->isPast())
                 <section class="col-12">
                     <div class="p-4 col-12 mt-10 mb-10 border-red-700 bg-red-50">
                         <i class="fas fa-info-circle fa-lg"></i>

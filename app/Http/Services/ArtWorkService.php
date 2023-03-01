@@ -13,13 +13,16 @@ use App\Models\Auction;
 use App\Models\BidLog;
 use App\Models\User;
 use App\Models\UserArtWork;
+use App\Notifications\ArtWorkWon;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
 class ArtWorkService
 {
@@ -106,18 +109,20 @@ class ArtWorkService
         return ArtWork::query()->where('name', 'like', sprintf("%%%s%%", $keyword))->paginate(ArtWork::PAGINATION_LIMIT);
     }
 
-    public function finishArtWork(BidLog|Model $bid): UserArtWork|Model|null
+    public function closeArtwork(ArtWork|Model $artWork): UserArtWork|Model|null
     {
-        /** @var Carbon $lastBidCreatedAt */
-        $lastBidCreatedAt = $bid->artWork->created_at;
-        $period = [$lastBidCreatedAt, $lastBidCreatedAt->subMinutes(3)];
 
-        $bids = BidLog::query()->where('art_work_id', $bid->art_work_id)->whereBetween('created_at', $period)->get();
-        if ($bids->count() < 0 || $bid->id === $bid->artWork->bids()->first()->id) {
-            return $this->defineArtWorkToUser($bid);
+        $lastBid = $artWork->bids()->orderBy('created_at', 'desc')->first();
+
+        if (is_null($lastBid)) {
+            return null;
         }
 
-        return null;
+        $userArtwork = $this->defineArtWorkToUser($lastBid);
+
+        Notification::send($lastBid->user, new ArtWorkWon($lastBid));
+
+        return $userArtwork;
     }
 
     private function defineArtWorkToUser(Model|BidLog $bid): UserArtWork|Model

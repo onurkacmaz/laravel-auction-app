@@ -7,13 +7,13 @@ use App\Http\Requests\BiddingRequest;
 use App\Http\Requests\FollowOrUnFollowRequest;
 use App\Http\Services\ArtWorkService;
 use App\Http\Services\AuctionService;
-use App\Jobs\FinishArtWork;
 use App\Models\BidLog;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
+use RuntimeException;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
 class ArtWorkController extends Controller
@@ -31,6 +31,10 @@ class ArtWorkController extends Controller
     {
         $artWork = $this->artWorkService->getArtWorkById($id);
 
+        if (Carbon::parse($artWork->auction->end_date)->isPast()) {
+            throw new RuntimeException("Müzayede sona erdi. Bu eseri takip edemezsiniz.");
+        }
+
         if ($request->get('isFavorite')) {
             $artWork->favorites()->where('user_id', $request->user()->getAuthIdentifier())->delete();
         } else {
@@ -45,6 +49,10 @@ class ArtWorkController extends Controller
     public function follow(int $id, FollowOrUnFollowRequest $request): JsonResponse
     {
         $artWork = $this->artWorkService->getArtWorkById($id);
+
+        if (Carbon::parse($artWork->auction->end_date)->isPast()) {
+            throw new RuntimeException("Müzayede sona erdi. Bu eseri takip edemezsiniz.");
+        }
 
         if ($request->get('isFollow')) {
             $artWork->follows()->where('user_id', $request->user()->getAuthIdentifier())->delete();
@@ -75,8 +83,6 @@ class ArtWorkController extends Controller
         }
 
         $artWork->update(['end_price' => $bid->bid_amount]);
-
-        Queue::later(now()->addMinutes(3), new FinishArtWork($bid));
 
         $this->artWorkService->sendNewBidMail($bid);
 

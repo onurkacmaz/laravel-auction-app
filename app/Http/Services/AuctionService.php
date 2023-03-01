@@ -56,7 +56,7 @@ class AuctionService
 
     public function getActiveAuction(): Auction|Model|null
     {
-        return Auction::query()->where('start_date', '<=', Carbon::now())->where('end_date', '>=', Carbon::now())->where('status', true)->first();
+        return Auction::query()->where('status', true)->first();
     }
 
     public function isLastXMinutes(int $minutes, $date): bool {
@@ -74,6 +74,6 @@ class AuctionService
 
     public function getArchivedAuctions(): LengthAwarePaginator
     {
-        return Auction::query()->where('status', true)->where('end_date', '<', Carbon::now())->paginate(Auction::PAGINATION_LIMIT);
+        return Auction::query()->where('status', false)->where('end_date', '<', Carbon::now())->paginate(Auction::PAGINATION_LIMIT);
     }
 }
