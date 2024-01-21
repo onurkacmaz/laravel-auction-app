@@ -1,4 +1,4 @@
-@php $sliderImages = json_decode($generalSettings['homepage_slider'], true) @endphp
+@php $sliderImages = json_decode($generalSettings['homepage_slider'] ?? '[]', true) @endphp
 @if(count($sliderImages) > 0)
     <div id="entry-slider">
         <div>
